@@ -1,0 +1,282 @@
+{
+ "generated": "",
+ "capital": 500000.0,
+ "equity": 500000.0,
+ "stats": {
+  "trades": 0,
+  "note": "no trades generated"
+ },
+ "open": [],
+ "closed": [],
+ "curve": [],
+ "strategy": {
+  "version": 1,
+  "name": "V1_Liquid_RVoverIV_NextWeekly",
+  "rationale": "Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) The front expiry with 2 sessions left bled 18.2% of premium per session versus 5.9% on the next weekly, so this avoids any expiry with under 3 sessions left. (2) Round-trip friction on liquid near-ATM index calls ran 0.96-1.29%, but jumped past 2% on sub-Rs60 premiums, so the premium floor does more work than any OI filter. (3) Five-day realised vol was 6.9% against 11.4% implied - RV/IV 0.60 - which is precisely the regime where a directional buyer is right on direction and still loses. So the binding condition is realised-versus-implied, not the signal.",
+  "spec": {
+   "name": "V1_Liquid_RVoverIV_NextWeekly",
+   "rationale": "Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) The front expiry with 2 sessions left bled 18.2% of premium per session versus 5.9% on the next weekly, so this avoids any expiry with under 3 sessions left. (2) Round-trip friction on liquid near-ATM index calls ran 0.96-1.29%, but jumped past 2% on sub-Rs60 premiums, so the premium floor does more work than any OI filter. (3) Five-day realised vol was 6.9% against 11.4% implied - RV/IV 0.60 - which is precisely the regime where a directional buyer is right on direction and still loses. So the binding condition is realised-versus-implied, not the signal.",
+   "universe": [
+    "NIFTY",
+    "BANKNIFTY",
+    "RELIANCE",
+    "ICICIBANK"
+   ],
+   "session": {
+    "start": "09:35",
+    "no_new_after": "14:15",
+    "force_exit": "15:15"
+   },
+   "selection": {
+    "expiry": "skip_expiry_day",
+    "min_sessions_left": 3.0,
+    "delta_band": [
+     0.35,
+     0.6
+    ],
+    "max_spread_pct": 0.7,
+    "min_oi": 150000,
+    "max_premium_per_lot": 60000
+   },
+   "entry_long_call": {
+    "all": [
+     {
+      "feature": "trend_score",
+      "op": ">",
+      "value": 0.45
+     },
+     {
+      "feature": "vwap_dev_pct",
+      "op": ">",
+      "value": 0.08
+     },
+     {
+      "feature": "adx_proxy",
+      "op": ">",
+      "value": 25
+     },
+     {
+      "feature": "minutes_to_close",
+      "op": ">",
+      "value": 75
+     },
+     {
+      "feature": "rv_iv_ratio",
+      "op": ">",
+      "value": 0.85
+     },
+     {
+      "feature": "realised_edge_ratio",
+      "op": ">",
+      "value": 1.3
+     },
+     {
+      "feature": "atr_pct",
+      "op": ">",
+      "value": 0.03
+     },
+     {
+      "feature": "atm_total_friction_pct",
+      "op": "<",
+      "value": 1.45
+     },
+     {
+      "feature": "liquid_contracts",
+      "op": ">=",
+      "value": 6
+     },
+     {
+      "feature": "atm_top_of_book_lots",
+      "op": ">",
+      "value": 2.0
+     }
+    ],
+    "any": [
+     {
+      "feature": "opening_range_break",
+      "op": ">",
+      "value": 0.5
+     },
+     {
+      "feature": "ema_fast_slow_pct",
+      "op": ">",
+      "value": 0.12
+     }
+    ],
+    "none": [
+     {
+      "feature": "iv_vs_20d",
+      "op": ">",
+      "value": 1.35
+     },
+     {
+      "feature": "atm_one_tick_pct",
+      "op": ">",
+      "value": 0.1
+     },
+     {
+      "feature": "sessions_left",
+      "op": "<",
+      "value": 3.0
+     }
+    ]
+   },
+   "exit": {
+    "target_pct": 26.0,
+    "stop_pct": 14.0,
+    "trail_after_pct": 15.0,
+    "trail_giveback_pct": 40.0,
+    "time_stop_min": 50,
+    "underlying_invalidation": {
+     "feature": "vwap_dev_pct",
+     "flip": true
+    },
+    "iv_crush_exit_pct": 8.0
+   },
+   "sizing": {
+    "risk_per_trade_pct": 1.5,
+    "max_lots": 4,
+    "max_premium_pct": 20.0
+   },
+   "risk": {
+    "daily_loss_pct": 3.0,
+    "max_trades_day": 3,
+    "max_concurrent": 2,
+    "cooldown_min_after_loss": 30
+   },
+   "entry_long_put": {
+    "all": [
+     {
+      "feature": "trend_score",
+      "op": "<",
+      "value": -0.45
+     },
+     {
+      "feature": "vwap_dev_pct",
+      "op": "<",
+      "value": -0.08
+     },
+     {
+      "feature": "adx_proxy",
+      "op": ">",
+      "value": 25
+     },
+     {
+      "feature": "minutes_to_close",
+      "op": ">",
+      "value": 75
+     },
+     {
+      "feature": "rv_iv_ratio",
+      "op": ">",
+      "value": 0.85
+     },
+     {
+      "feature": "realised_edge_ratio",
+      "op": ">",
+      "value": 1.3
+     },
+     {
+      "feature": "atr_pct",
+      "op": ">",
+      "value": 0.03
+     },
+     {
+      "feature": "atm_total_friction_pct",
+      "op": "<",
+      "value": 1.45
+     },
+     {
+      "feature": "liquid_contracts",
+      "op": ">=",
+      "value": 6
+     },
+     {
+      "feature": "atm_top_of_book_lots",
+      "op": ">",
+      "value": 2.0
+     }
+    ],
+    "any": [
+     {
+      "feature": "opening_range_break",
+      "op": "<",
+      "value": -0.5
+     },
+     {
+      "feature": "ema_fast_slow_pct",
+      "op": "<",
+      "value": -0.12
+     }
+    ],
+    "none": [
+     {
+      "feature": "iv_vs_20d",
+      "op": ">",
+      "value": 1.35
+     },
+     {
+      "feature": "atm_one_tick_pct",
+      "op": ">",
+      "value": 0.1
+     },
+     {
+      "feature": "sessions_left",
+      "op": "<",
+      "value": 3.0
+     }
+    ]
+   },
+   "direction": "LONG_ONLY"
+  },
+  "backtest": {
+   "mode": "live_calibration",
+   "source": "kite 24-Jul-2026",
+   "nifty_spot": 23767.45,
+   "atm_iv_front": 0.114,
+   "realised_vol_5d": 0.069,
+   "rv_iv": 0.604,
+   "confidence": "n/a - calibrated, not backtested"
+  }
+ },
+ "history": [
+  {
+   "version": 1,
+   "name": "V1_Liquid_RVoverIV_NextWeekly",
+   "rationale": "Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) The front expiry with 2 sessions left bled 18.2% of premium per session versus 5.9% on the next weekly, so this avoids any expiry with under 3 sessions left. (2) Round-trip friction on liquid near-ATM index calls ran 0.96-1.29%, but jumped past 2% on sub-Rs60 premiums, so the premium floor does more work than any OI filter. (3) Five-day realised vol was 6.9% against 11.4% implied - RV/IV 0.60 - which is precisely the regime where a directional buyer is right on direction and still loses. So the binding condition is realised-versus-implied, not the signal.",
+   "status": "ACTIVE",
+   "created_ts": "2026-07-24T23:33:27+05:30",
+   "backtest": "{\"mode\": \"live_calibration\", \"source\": \"kite 24-Jul-2026\", \"nifty_spot\": 23767.45, \"atm_iv_front\": 0.114, \"realised_vol_5d\": 0.069, \"rv_iv\": 0.604, \"confidence\": \"n/a - calibrated, not backtested\"}"
+  }
+ ],
+ "reviews": [],
+ "journal": [
+  {
+   "id": 3,
+   "ts": "2026-07-25T00:02:20+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Sat 25 Jul 00:02 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 2,
+   "ts": "2026-07-25T00:02:20+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from nse_csv",
+   "detail": "211 symbols cached",
+   "payload": "{}"
+  },
+  {
+   "id": 1,
+   "ts": "2026-07-24T23:33:27+05:30",
+   "kind": "STRATEGY",
+   "symbol": "",
+   "headline": "Installed v1 calibrated on live Kite data",
+   "detail": "Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) The front expiry with 2 sessions left bled 18.2% of premium per session versus 5.9% on the next weekly, so this avoids any expiry with under 3 sessions left. (2) Round-trip friction on liquid near-ATM index calls ran 0.96-1.29%, but jumped past 2% on sub-Rs60 premiums, so the premium floor does more work than any OI filt",
+   "payload": "{}"
+  }
+ ]
+}
