@@ -1,0 +1,112 @@
+# ============================================================
+#  OPTIONS DESK - operator config
+#  Everything the BOT is not allowed to change lives here.
+#  The bot writes its own strategy into the strategies table.
+# ============================================================
+
+account:
+  starting_capital: 500000.0        # INR
+  currency: "INR"
+
+# --- Hard ceilings. The brain may tighten these, never loosen. ---
+risk_ceiling:
+  max_risk_per_trade_pct: 1.5       # % of equity at risk per position
+  max_premium_deployed_pct: 30.0    # % of equity in open option premium
+  max_daily_loss_pct: 3.0           # halt trading for the day
+  max_weekly_loss_pct: 7.0          # halt trading for the week
+  max_trades_per_day: 8
+  max_concurrent_positions: 3
+  max_lots_per_position: 6
+  kill_switch_drawdown_pct: 15.0    # halt everything, manual reset required
+
+session:
+  open: "09:15"
+  close: "15:30"
+  no_entry_before: "09:20"
+  no_entry_after: "14:45"
+  force_flat_at: "15:15"            # never carry an intraday position to close
+
+universe:
+  indices: ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY"]
+  # NIFTY 50 large caps with genuinely deep option books. Anything outside
+  # this list is refused even if the brain asks for it.
+  stocks: ["RELIANCE", "HDFCBANK", "ICICIBANK", "INFY", "TCS", "SBIN",
+           "AXISBANK", "KOTAKBANK", "BHARTIARTL", "LT", "ITC", "BAJFINANCE",
+           "MARUTI", "TATAMOTORS", "TATASTEEL", "HINDALCO", "ADANIENT",
+           "SUNPHARMA", "TITAN", "M&M"]
+  max_underlyings_live: 4           # top N by liquidity x volatility each cycle
+  screen_every_cycle: true
+
+# --- Liquidity gate. Calibrated on real Zerodha books, 23 Jul 2026. ---
+# See desk/liquidity.py for the measurements these came from.
+liquidity:
+  common:
+    max_share_of_touch: 0.5         # never take more than half the top level
+    max_impact_pct: 0.35            # extra cost of walking the book, round trip
+  index:
+    min_sessions_left: 3.0          # front-expiry theta cliff
+    min_premium: 60.0               # below this the Rs 0.05 tick dominates
+    max_premium: 900.0
+    max_spread_pct: 0.70            # NIFTY weekly quotes ~0.24%, BN ~0.48%
+    min_oi: 150000
+    min_volume: 50000
+    max_total_friction_pct: 1.60    # charges + spread + impact
+    # Stock ATM premiums collapse below the tick floor sooner than index ones,
+    # so they need more room. Measured 24-Jul with 2 sessions left: RELIANCE
+    # ATM Rs8.10, ICICIBANK ATM Rs5.78 - both unplayable. Same RELIANCE strike
+    # one expiry out: Rs33.67 at a 0.74% spread, comfortably tradable.
+  stock:
+    min_sessions_left: 6.0
+    min_premium: 20.0               # RELIANCE JUL 1280 CE at Rs 7.72 = 3.4% - no
+    max_premium: 400.0
+    max_spread_pct: 1.10            # RELIANCE AUG 1280 CE quotes ~0.74%
+    min_oi: 200000
+    min_volume: 40000
+    max_total_friction_pct: 2.20
+
+# --- Volatility gate. No point buying premium into a dead tape. ---
+# Measured on NIFTY 5-minute bars, 20-24 Jul 2026: ATR ran 0.037% of spot,
+# daily high-low averaged 0.64%, daily open-close averaged 0.31%, and 5-day
+# realised vol was 6.9% against 11.4% implied on the front expiry.
+volatility:
+  min_atr_pct: 0.030                # 14-bar ATR on 5m bars, % of underlying
+  min_expected_move_per_session_pct: 0.40   # implied move for ONE session
+  min_rv_iv_ratio: 0.85             # realised vs implied - under 1 you pay up
+  min_edge_ratio: 1.50              # implied move vs the full cost hurdle
+  min_realised_edge_ratio: 1.30     # the honest one: actual move vs that hurdle
+
+# --- Zerodha cost model (source: zerodha.com/charges, read 23-Jul-2026) ---
+costs:
+  brokerage_per_order: 20.0         # flat Rs 20 per executed option order
+  stt_sell_pct: 0.15                # % of sell premium
+  txn_charge_pct: 0.03553           # NSE, % of premium, both sides
+  sebi_pct: 0.0001                  # Rs 10 per crore
+  ipft_pct: 0.000001                # Rs 0.01 per crore
+  stamp_buy_pct: 0.003              # % of buy premium
+  gst_pct: 18.0                     # on brokerage + sebi + txn
+  slippage_ticks: 1                 # extra ticks paid on entry AND exit
+  tick_size: 0.05
+  synthetic_spread_pct:             # used only when depth is unavailable
+    index_liquid: 0.35
+    index_far: 1.20
+    stock: 1.00
+
+market:
+  risk_free_rate: 0.065
+  trading_days_per_year: 252
+  calendar_days_per_year: 365
+
+data:
+  provider: "auto"                  # auto | nse | kite
+  underlying_candles: "yahoo"
+  snapshot_interval_sec: 60
+
+brain:
+  model: "claude-sonnet-4-6"
+  review_every_n_trades: 10
+  review_after_idle_hours: 30
+  promotion:
+    min_backtest_trades: 20
+    min_paper_trades_before_promote: 15
+    require_positive_expectancy: true
+  max_tokens: 4000

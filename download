@@ -1,0 +1,4 @@
+# state is committed so the desk keeps its memory between runs
+state/kite_token.txt
+__pycache__/
+*.pyc
