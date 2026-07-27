@@ -97,7 +97,7 @@ market:
   calendar_days_per_year: 365
 
 data:
-  provider: "auto"                  # auto | nse | kite
+  provider: "kite"                  # auto | nse | kite
   underlying_candles: "yahoo"
   snapshot_interval_sec: 60
 
