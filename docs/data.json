@@ -264,6 +264,17 @@
  ],
  "reviews": [
   {
+   "id": 5,
+   "ts": "2026-07-27T18:25:29+05:30",
+   "trigger": "idle",
+   "from_version": 1,
+   "to_version": 1,
+   "stats": "{\"trades\": 0, \"note\": \"no trades generated\"}",
+   "lessons": "Five review cycles, zero trades, zero empirical data \u2014 the rejection loop is now the dominant risk, not the strategy's signal logic. The blocked-and-skipped log is conclusive: on the 11:57 scan NIFTY showed trend_score=0.555 (passes 0.45), rv/iv=0.983 (passes 0.85), friction=1.346% (passes 1.45%), edge=2.858 (passes 1.3) \u2014 four of the ten 'all' conditions clearing simultaneously on a liquid index name, yet no trade fired. The 12:22 scan confirms trend_score=0.141 on NIFTY as the active blocker on an otherwise acceptable tape; BANKNIFTY trend=-0.231 blocks the put side. The conjunctive bundle of ten simultaneous 'all' conditions plus an 'any' clause across a universe of 2-4 names has a joint intraday probability that is structurally near zero \u2014 this is not bad luck, it is arithmetic. Four consecutive reviews correctly diagnosed this and proposed relaxation; each was rejected for lacking 20 trades, but the strategy will never accumulate 20 trades unless the filter is loosened \u2014 the rejection criterion and the filter trap are mutually reinforcing. The honest conclusion is that the strategy must be modified to fire, or it is not a trading strategy.",
+   "changes": "proposal rejected: only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "raw": "{\"review\": {\"lessons\": \"Five review cycles, zero trades, zero empirical data \\u2014 the rejection loop is now the dominant risk, not the strategy's signal logic. The blocked-and-skipped log is conclusive: on the 11:57 scan NIFTY showed trend_score=0.555 (passes 0.45), rv/iv=0.983 (passes 0.85), friction=1.346% (passes 1.45%), edge=2.858 (passes 1.3) \\u2014 four of the ten 'all' conditions clearing simultaneously on a liquid index name, yet no trade fired. The 12:22 scan confirms trend_score=0.141 on NIFTY as the active blocker on an otherwise acceptable tape; BANKNIFTY trend=-0.231 blocks the put side. The conjunctive bundle of ten simultaneous 'all' conditions plus an 'any' clause across a universe of 2-4 names has a joint intraday probability that is structurally near zero \\u2014 this is not bad luck, it is arithmetic. Four consecutive reviews correctly diagnosed this and proposed relaxation; each was rejected for lacking 20 trades, but the strategy will never accumulate 20 trades unless the filter is loosened \\u2014 the rejection criterion and the filter trap are mutually reinforcing. The honest conclusion is that the strategy must be modified to fire, or it is not a trading strategy.\", \"diagnosis\": \"The conjunctive ten-condition 'all' block makes trade generation arithmetically near-impossible across a 2-4 name universe on any single intraday scan, creating a self-sealing loop where zero trades prevent validation and zero validation prevents change.\", \"action\": \"TWEAK\", \"changes\": \"1) Reduce the 'all' block to the six highest-conviction conditions: rv_iv_ratio>0.85, realised_edge_ratio>1.3, atm_total_friction_pct<1.45, minutes_to_close>75, liquid_contracts>=6, atm_top_of_book_lots>2.0. These are the friction and vol-regime gates that protect capital structurally. 2) Move trend_score, vwap_dev_pct, and adx_proxy out of 'all' and into a reformed 'any' block requiring at least TWO of the three to pass (trend_score>0.40 for calls/<-0.40 for puts, vwap_dev_pct>0.06 for calls/<-0.06 for puts, adx_proxy>22) \\u2014 direction confirmation is still required but not every dimension simultaneously. 3) Drop atr_pct from the 'all' block entirely; it is partially redundant with realised_edge_ratio and rv_iv_ratio and adds another conjunctive failure point. 4) Keep all 'none' blockers unchanged \\u2014 they are protective, not restrictive on the entry side. 5) Keep all sizing, risk, exit, and session parameters unchanged. 6) Accept that the first 10-15 trades will be exploratory observations, not optimised outcomes \\u2014 the goal is to generate a real P&L record so the next review has evidence to work with.\", \"confidence\": 0.72}, \"proposal\": {\"name\": \"V2_Relaxed_Conjunct_NextWeekly\", \"rationale\": \"V1 never fired because ten simultaneous 'all' conditions across a 2-4 name universe have near-zero joint intraday probability. V2 keeps the six structural gates (friction, vol-regime, liquidity, time) in the hard 'all' block and moves the three directional filters (trend_score, vwap_dev_pct, adx_proxy) into a reformed 'any' block requiring at least two of three \\u2014 direction confirmation is still enforced but not every dimension simultaneously. atr_pct is dropped as redundant with realised_edge_ratio. All sizing, risk, exit, and session parameters are unchanged from V1 to isolate the effect of entry relaxation.\", \"universe\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"], \"session\": {\"start\": \"09:35\", \"no_new_after\": \"14:15\", \"force_exit\": \"15:15\"}, \"selection\": {\"expiry\": \"skip_expiry_day\", \"delta_band\": [0.35, 0.6], \"max_spread_pct\": 0.7, \"min_oi\": 150000, \"max_premium_per_lot\": 60000}, \"entry_long_call\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.85}, {\"feature\": \"realised_edge_ratio\", \"op\": \">\", \"value\": 1.3}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.45}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 75}, {\"feature\": \"liquid_contracts\", \"op\": \">=\", \"value\": 6}, {\"feature\": \"atm_top_of_book_lots\", \"op\": \">\", \"value\": 2.0}], \"any\": [{\"feature\": \"trend_score\", \"op\": \">\", \"value\": 0.4}, {\"feature\": \"vwap_dev_pct\", \"op\": \">\", \"value\": 0.06}, {\"feature\": \"adx_proxy\", \"op\": \">\", \"value\": 22}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.35}, {\"feature\": \"atm_one_tick_pct\", \"op\": \">\", \"value\": 0.1}, {\"feature\": \"sessions_left\", \"op\": \"<\", \"value\": 3.0}]}, \"entry_long_put\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.85}, {\"feature\": \"realised_edge_ratio\", \"op\": \">\", \"value\": 1.3}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.45}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 75}, {\"feature\": \"liquid_contracts\", \"op\": \">=\", \"value\": 6}, {\"feature\": \"atm_top_of_book_lots\", \"op\": \">\", \"value\": 2.0}], \"any\": [{\"feature\": \"trend_score\", \"op\": \"<\", \"value\": -0.4}, {\"feature\": \"vwap_dev_pct\", \"op\": \"<\", \"value\": -0.06}, {\"feature\": \"adx_proxy\", \"op\": \">\", \"value\": 22}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.35}, {\"feature\": \"atm_one_tick_pct\", \"op\": \">\", \"value\": 0.1}, {\"feature\": \"sessions_left\", \"op\": \"<\", \"value\": 3.0}]}, \"exit\": {\"target_pct\": 26.0, \"stop_pct\": 14.0, \"trail_after_pct\": 15.0, \"trail_giveback_pct\": 40.0, \"time_stop_min\": 50, \"iv_crush_exit_pct\": 8.0, \"underlying_invalidation\": {\"feature\": \"vwap_dev_pct\", \"flip\": true}}, \"sizing\": {\"risk_per_trade_pct\": 1.5, \"max_lots\": 3, \"max_premium_pct\": 20.0}, \"risk\": {\"daily_loss_pct\": 3.0, \"max_trades_day\": 3, \"max_concurrent\": 2, \"cooldown_min_after_loss\": 30}}}"
+  },
+  {
    "id": 4,
    "ts": "2026-07-27T16:27:22+05:30",
    "trigger": "idle",
@@ -309,6 +320,42 @@
   }
  ],
  "journal": [
+  {
+   "id": 53,
+   "ts": "2026-07-27T18:25:29+05:30",
+   "kind": "STRATEGY",
+   "symbol": "",
+   "headline": "Rejected proposal 'V2_Relaxed_Conjunct_NextWeekly'",
+   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 12, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
+  },
+  {
+   "id": 52,
+   "ts": "2026-07-27T18:25:29+05:30",
+   "kind": "REVIEW",
+   "symbol": "",
+   "headline": "v1 review: TWEAK",
+   "detail": "Five review cycles, zero trades, zero empirical data \u2014 the rejection loop is now the dominant risk, not the strategy's signal logic. The blocked-and-skipped log is conclusive: on the 11:57 scan NIFTY showed trend_score=0.555 (passes 0.45), rv/iv=0.983 (passes 0.85), friction=1.346% (passes 1.45%), edge=2.858 (passes 1.3) \u2014 four of the ten 'all' conditions clearing simultaneously on a liquid index name, yet no trade fired. The 12:22 scan confirms trend_score=0.141 on NIFTY as the active blocker on an otherwise acceptable tape; BANKNIFTY trend=-0.231 blocks the put side. The conjunctive bundle of ten simultaneous 'all' conditions plus an 'any' clause across a universe of 2-4 names has a joint intraday probability that is structurally near zero \u2014 this is not bad luck, it is arithmetic. Four consecutive reviews correctly diagnosed this and proposed relaxation; each was rejected for lacking 20 trades, but the strategy will never accumulate 20 trades unless the filter is loosened \u2014 the rejection criterion and the filter trap are mutually reinforcing. The honest conclusion is that the strategy must be modified to fire, or it is not a trading strategy.\n\nDIAGNOSIS: The conjunctive ten-condition 'all' block makes trade generation arithmetically near-impossible across a 2-4 name universe on any single intraday scan, creating a self-sealing loop where zero trades prevent validation and zero validation prevents change.",
+   "payload": "{}"
+  },
+  {
+   "id": 51,
+   "ts": "2026-07-27T18:25:29+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Mon 27 Jul 18:25 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 50,
+   "ts": "2026-07-27T18:25:29+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "215 symbols cached",
+   "payload": "{}"
+  },
   {
    "id": 49,
    "ts": "2026-07-27T16:27:22+05:30",
