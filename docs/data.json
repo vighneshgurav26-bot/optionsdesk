@@ -264,6 +264,17 @@
  ],
  "reviews": [
   {
+   "id": 6,
+   "ts": "2026-07-27T19:25:28+05:30",
+   "trigger": "idle",
+   "from_version": 1,
+   "to_version": 1,
+   "stats": "{\"trades\": 0, \"note\": \"no trades generated\"}",
+   "lessons": "Five review cycles, zero trades, zero empirical data \u2014 the rejection loop is now fully self-sealing and must be broken by design. The blocked-and-skipped log is the only evidence available, and it is unambiguous: on the 11:57 scan NIFTY showed trend_score=0.555, rv/iv=0.983, edge=2.858, friction=1.346% \u2014 four heavy conditions clearing simultaneously on the most liquid index name in the universe, yet no trade fired, almost certainly because adx_proxy, vwap_dev_pct, and/or the 'any' clause did not simultaneously clear. The 12:22 scan confirms trend_score=0.141 as the active blocker on an otherwise clean tape; the directional filter alone is gating out sessions where vol, friction, and edge are all acceptable. Every past review correctly diagnosed conjunctive over-constraint; every proposed fix was rejected for lacking 20 trades; but the strategy structurally cannot reach 20 trades without relaxation \u2014 the validation criterion and the filter trap are arithmetically mutually exclusive. The note from the system itself states plainly: 'If the desk has not traded, the entry rules are too tight. A strategy that never fires learns nothing.' That is the authoritative instruction and it must be acted on now.",
+   "changes": "proposal rejected: only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "raw": "{\"review\": {\"lessons\": \"Five review cycles, zero trades, zero empirical data \\u2014 the rejection loop is now fully self-sealing and must be broken by design. The blocked-and-skipped log is the only evidence available, and it is unambiguous: on the 11:57 scan NIFTY showed trend_score=0.555, rv/iv=0.983, edge=2.858, friction=1.346% \\u2014 four heavy conditions clearing simultaneously on the most liquid index name in the universe, yet no trade fired, almost certainly because adx_proxy, vwap_dev_pct, and/or the 'any' clause did not simultaneously clear. The 12:22 scan confirms trend_score=0.141 as the active blocker on an otherwise clean tape; the directional filter alone is gating out sessions where vol, friction, and edge are all acceptable. Every past review correctly diagnosed conjunctive over-constraint; every proposed fix was rejected for lacking 20 trades; but the strategy structurally cannot reach 20 trades without relaxation \\u2014 the validation criterion and the filter trap are arithmetically mutually exclusive. The note from the system itself states plainly: 'If the desk has not traded, the entry rules are too tight. A strategy that never fires learns nothing.' That is the authoritative instruction and it must be acted on now.\", \"diagnosis\": \"The conjunctive 'all' block demands ten conditions simultaneously true across a universe of 2\\u20134 names in a single intraday window; the joint probability is structurally near zero, and the strategy has confirmed this empirically across a full trading day with zero fires. The directional filter (trend_score threshold 0.45, vwap_dev_pct threshold 0.08, adx_proxy threshold 25 \\u2014 all required together) is the tightest cluster; relaxing it is the single highest-leverage change.\", \"action\": \"TWEAK\", \"changes\": \"1) Lower trend_score entry threshold from 0.45 to 0.30 (calls) / -0.30 (puts) \\u2014 the 11:57 scan showed 0.555 passing but 12:22 showed 0.141 failing; a 0.30 floor keeps weak, directionless tapes out while catching moderate momentum. 2) Lower vwap_dev_pct from 0.08 to 0.05 \\u2014 this is a supporting confirmation, not a primary signal; 0.08 is too demanding in low-range sessions. 3) Lower adx_proxy from 25 to 20 \\u2014 ADX lags; 25 is appropriate for trending markets but routinely fails in early-session or range-bound phases that can still produce a directional move. 4) Drop realised_edge_ratio from the 'all' block entirely and move it to the 'any' clause alongside opening_range_break and ema_fast_slow_pct \\u2014 it is a secondary confirmation, not a gating condition; requiring it AND trend AND vwap AND adx AND rv_iv simultaneously is the conjunction that kills the trade rate. 5) Widen the 'any' clause: require any ONE of (opening_range_break > 0.5, ema_fast_slow_pct > 0.12, realised_edge_ratio > 1.3) for calls, symmetric for puts \\u2014 this means a strong trend signal alone or a strong momentum signal alone is sufficient secondary confirmation. 6) Keep rv_iv_ratio >= 0.85, atm_total_friction_pct < 1.45, minutes_to_close > 75, liquid_contracts >= 6, atm_top_of_book_lots > 2.0 unchanged \\u2014 these are the genuine economic gatekeepers and the calibration showed they work. 7) Keep all sizing, risk, and exit parameters unchanged \\u2014 do not touch what has not been tested. Accept the first 5\\u201310 trades as a calibration run at the current 1.5% risk-per-trade limit; review again once 10+ closed trades exist.\", \"confidence\": 0.82}, \"proposal\": {\"name\": \"V2_RelaxedDirectional_RVoverIV\", \"rationale\": \"Five cycles, zero trades: the ten-condition conjunctive block is arithmetically too tight for a 2-4 name universe. The blocked log shows NIFTY passing rv/iv, edge, and friction simultaneously yet still not firing because trend_score, vwap_dev_pct, and adx_proxy all had to clear at once. Three surgical relaxations: trend_score threshold lowered to 0.30, vwap_dev_pct to 0.05, adx_proxy to 20. realised_edge_ratio moved from 'all' to the 'any' clause so a strong trend signal alone is sufficient secondary confirmation without also requiring a strong realised-edge reading simultaneously. Cost and vol-regime gatekeepers (rv_iv_ratio, atm_total_friction_pct, atr_pct, liquid_contracts) are unchanged because they are the genuine economic filters. All sizing, risk, and exit parameters are unchanged to isolate the effect of the entry relaxation.\", \"universe\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"], \"session\": {\"start\": \"09:35\", \"no_new_after\": \"14:15\", \"force_exit\": \"15:15\"}, \"selection\": {\"expiry\": \"skip_expiry_day\", \"delta_band\": [0.35, 0.6], \"max_spread_pct\": 0.7, \"min_oi\": 150000, \"max_premium_per_lot\": 60000}, \"entry_long_call\": {\"all\": [{\"feature\": \"trend_score\", \"op\": \">\", \"value\": 0.3}, {\"feature\": \"vwap_dev_pct\", \"op\": \">\", \"value\": 0.05}, {\"feature\": \"adx_proxy\", \"op\": \">\", \"value\": 20}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 75}, {\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.85}, {\"feature\": \"atr_pct\", \"op\": \">\", \"value\": 0.03}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.45}, {\"feature\": \"liquid_contracts\", \"op\": \">=\", \"value\": 6}, {\"feature\": \"atm_top_of_book_lots\", \"op\": \">\", \"value\": 2.0}], \"any\": [{\"feature\": \"opening_range_break\", \"op\": \">\", \"value\": 0.5}, {\"feature\": \"ema_fast_slow_pct\", \"op\": \">\", \"value\": 0.12}, {\"feature\": \"realised_edge_ratio\", \"op\": \">\", \"value\": 1.3}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.35}, {\"feature\": \"atm_one_tick_pct\", \"op\": \">\", \"value\": 0.1}, {\"feature\": \"sessions_left\", \"op\": \"<\", \"value\": 3.0}]}, \"entry_long_put\": {\"all\": [{\"feature\": \"trend_score\", \"op\": \"<\", \"value\": -0.3}, {\"feature\": \"vwap_dev_pct\", \"op\": \"<\", \"value\": -0.05}, {\"feature\": \"adx_proxy\", \"op\": \">\", \"value\": 20}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 75}, {\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.85}, {\"feature\": \"atr_pct\", \"op\": \">\", \"value\": 0.03}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.45}, {\"feature\": \"liquid_contracts\", \"op\": \">=\", \"value\": 6}, {\"feature\": \"atm_top_of_book_lots\", \"op\": \">\", \"value\": 2.0}], \"any\": [{\"feature\": \"opening_range_break\", \"op\": \"<\", \"value\": -0.5}, {\"feature\": \"ema_fast_slow_pct\", \"op\": \"<\", \"value\": -0.12}, {\"feature\": \"realised_edge_ratio\", \"op\": \">\", \"value\": 1.3}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.35}, {\"feature\": \"atm_one_tick_pct\", \"op\": \">\", \"value\": 0.1}, {\"feature\": \"sessions_left\", \"op\": \"<\", \"value\": 3.0}]}, \"exit\": {\"target_pct\": 26.0, \"stop_pct\": 14.0, \"trail_after_pct\": 15.0, \"trail_giveback_pct\": 40.0, \"time_stop_min\": 50, \"iv_crush_exit_pct\": 8.0, \"underlying_invalidation\": {\"feature\": \"vwap_dev_pct\", \"flip\": true}}, \"sizing\": {\"risk_per_trade_pct\": 1.5, \"max_lots\": 3, \"max_premium_pct\": 20.0}, \"risk\": {\"daily_loss_pct\": 3.0, \"max_trades_day\": 3, \"max_concurrent\": 2, \"cooldown_min_after_loss\": 30}}}"
+  },
+  {
    "id": 5,
    "ts": "2026-07-27T18:25:29+05:30",
    "trigger": "idle",
@@ -320,6 +331,42 @@
   }
  ],
  "journal": [
+  {
+   "id": 57,
+   "ts": "2026-07-27T19:25:28+05:30",
+   "kind": "STRATEGY",
+   "symbol": "",
+   "headline": "Rejected proposal 'V2_RelaxedDirectional_RVoverIV'",
+   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 12, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
+  },
+  {
+   "id": 56,
+   "ts": "2026-07-27T19:25:28+05:30",
+   "kind": "REVIEW",
+   "symbol": "",
+   "headline": "v1 review: TWEAK",
+   "detail": "Five review cycles, zero trades, zero empirical data \u2014 the rejection loop is now fully self-sealing and must be broken by design. The blocked-and-skipped log is the only evidence available, and it is unambiguous: on the 11:57 scan NIFTY showed trend_score=0.555, rv/iv=0.983, edge=2.858, friction=1.346% \u2014 four heavy conditions clearing simultaneously on the most liquid index name in the universe, yet no trade fired, almost certainly because adx_proxy, vwap_dev_pct, and/or the 'any' clause did not simultaneously clear. The 12:22 scan confirms trend_score=0.141 as the active blocker on an otherwise clean tape; the directional filter alone is gating out sessions where vol, friction, and edge are all acceptable. Every past review correctly diagnosed conjunctive over-constraint; every proposed fix was rejected for lacking 20 trades; but the strategy structurally cannot reach 20 trades without relaxation \u2014 the validation criterion and the filter trap are arithmetically mutually exclusive. The note from the system itself states plainly: 'If the desk has not traded, the entry rules are too tight. A strategy that never fires learns nothing.' That is the authoritative instruction and it must be acted on now.\n\nDIAGNOSIS: The conjunctive 'all' block demands ten conditions simultaneously true across a universe of 2\u20134 names in a single intraday window; the joint probability is structurally near zero, and the strategy has confirmed this empirically across a full trading day with zero fires. ",
+   "payload": "{}"
+  },
+  {
+   "id": 55,
+   "ts": "2026-07-27T19:25:28+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Mon 27 Jul 19:25 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 54,
+   "ts": "2026-07-27T19:25:28+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "215 symbols cached",
+   "payload": "{}"
+  },
   {
    "id": 53,
    "ts": "2026-07-27T18:25:29+05:30",
