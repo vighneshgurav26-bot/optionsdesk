@@ -17,6 +17,11 @@ Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) Th
 
 ## Reviews
 
+### 2026-07-27T11:57:08+05:30 — idle (v1 -> v1)
+Zero trades have been generated, which means the entry ruleset is not calibrated to actual market conditions — it is a hypothesis that has never been tested. The single logged scan shows NIFTY with edge=2.86, rv/iv=0.98, trend=0.56, friction=1.35% and BANKNIFTY with rv/iv=1.19, trend=-0.46: these are not junk readings, they are borderline or near-passing on several dimensions simultaneously, which suggests the conjunctive 'all' block is too tight as a bundle rather than any single condition being wildly wrong. With zero trades there is no MFE/MAE, no exit reason mix, no theta-versus-move data — the review has no empirical base to stand on, and any strong claim about signal quality would be fabricated. The RV/IV threshold of 0.85 is structurally sensible but on the day of the scan NIFTY was at 0.98 (passing) while BANKNIFTY was at 1.19 (passing), yet neither fired — meaning the blocking conditions are the conjunctive bundle of trend_score, vwap_dev_pct, adx_proxy, realised_edge_ratio, AND the 'any' clause all having to be true simultaneously. The strategy cannot learn, adjust, or validate itself with zero observations; the note in the payload explicitly flags this and it is correct.
+
+*Changes:* proposal rejected: only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive
+
 ## Closed trades
 
 | entry | symbol | contract | lots | in | out | why | gross | charges | net |

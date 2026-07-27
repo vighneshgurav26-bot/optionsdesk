@@ -20,6 +20,7 @@
   "AUBANK": 1000,
   "AUROPHARMA": 550,
   "AXISBANK": 625,
+  "BAJAJ-AUTO": 75,
   "BAJAJFINSV": 300,
   "BAJAJHLDNG": 75,
   "BAJFINANCE": 750,
@@ -73,6 +74,7 @@
   "GODREJCP": 500,
   "GODREJPROP": 325,
   "GRASIM": 250,
+  "GVT&D": 125,
   "HAL": 150,
   "HAVELLS": 500,
   "HCLTECH": 400,
@@ -121,6 +123,7 @@
   "LTF": 2250,
   "LTM": 150,
   "LUPIN": 425,
+  "M&M": 200,
   "MANAPPURAM": 3000,
   "MANKIND": 250,
   "MARICO": 1200,
@@ -134,6 +137,7 @@
   "MOTILALOFS": 775,
   "MPHASIS": 275,
   "MUTHOOTFIN": 275,
+  "NAM-INDIA": 625,
   "NATIONALUM": 1875,
   "NAUKRI": 550,
   "NBCC": 6500,
@@ -212,5 +216,5 @@
   "YESBANK": 31100,
   "ZYDUSLIFE": 900
  },
- "source": "nse_csv"
+ "source": "kite"
 }
