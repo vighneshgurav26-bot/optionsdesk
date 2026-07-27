@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - run: pip install requests PyYAML
+      - run: pip install requests PyYAML kiteconnect
       - name: Run one cycle
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
