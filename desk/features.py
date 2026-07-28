@@ -69,6 +69,10 @@ FEATURE_DOC = {
     "realised_edge_ratio": ("same hurdle, but against what the tape has ACTUALLY "
                             "been delivering. This is the honest one: edge_ratio "
                             "can look fine purely because options are expensive."),
+
+    # --- Kronos (optional AI forecast opinion, never required for a trade) ---
+    "kronos_bull_score": "0-1, how bullish Kronos's forecast is (0 if no signal or bearish)",
+    "kronos_bear_score": "0-1, how bearish Kronos's forecast is (0 if no signal or bullish)",
 }
 
 
@@ -118,6 +122,30 @@ def _pct(a: float | None, b: float | None) -> float:
     if not a or not b or a == 0:
         return 0.0
     return 100.0 * (b - a) / a
+
+
+def _kronos_scores(candles: list[dict]) -> tuple[float, float]:
+    """Ask Kronos its opinion. If ANYTHING goes wrong - model missing, bad
+    data, not enough history, whatever - both scores come back 0.0, which
+    is invisible to every existing rule and can never break a run or block
+    a trade. Kronos is a bonus opinion here, never a gatekeeper."""
+    try:
+        conv = [{"date": _dt.fromisoformat(c["t"]), "open": c["o"],
+                 "high": c["h"], "low": c["l"], "close": c["c"],
+                 "volume": c["v"]} for c in candles]
+        cleaned = kite_resample.clean_and_flag_gaps(conv)
+        window = kite_resample.latest_unbroken_window(cleaned)
+        sig = kronos_forecast.get_kronos_signal(window)
+        if not sig["available"]:
+            return 0.0, 0.0
+        conf = sig["confidence"]
+        if sig["direction"] == "bullish":
+            return round(conf, 3), 0.0
+        if sig["direction"] == "bearish":
+            return 0.0, round(conf, 3)
+        return 0.0, 0.0
+    except Exception:
+        return 0.0, 0.0
 
 
 # ---------------------------------------------------------------- builder
@@ -238,6 +266,9 @@ def build(snapshot: dict, candles: list[dict], cost_model, cfg: dict,
         f["expected_move_per_session_pct"] / cost_hurdle, 3) if cost_hurdle > 0 else 0.0
     f["realised_edge_ratio"] = round(
         f["realised_move_per_session_pct"] / cost_hurdle, 3) if cost_hurdle > 0 else 0.0
+
+    # ---------- Kronos (optional AI forecast, purely additive) ----------
+    f["kronos_bull_score"], f["kronos_bear_score"] = _kronos_scores(candles)
 
     return {k: (round(v, 5) if isinstance(v, float) and math.isfinite(v) else v)
             for k, v in f.items()}
