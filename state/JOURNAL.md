@@ -1,8 +1,8 @@
 # Options Desk — Trading Journal
 
-**Strategy v1 — V1_Liquid_RVoverIV_NextWeekly**
+**Strategy v2 — V3_WideOpen_HardRiskOnly**
 
-Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) The front expiry with 2 sessions left bled 18.2% of premium per session versus 5.9% on the next weekly, so this avoids any expiry with under 3 sessions left. (2) Round-trip friction on liquid near-ATM index calls ran 0.96-1.29%, but jumped past 2% on sub-Rs60 premiums, so the premium floor does more work than any OI filter. (3) Five-day realised vol was 6.9% against 11.4% implied - RV/IV 0.60 - which is precisely the regime where a directional buyer is right on direction and still loses. So the binding condition is realised-versus-implied, not the signal.
+v3: signal filters relaxed hard to generate trade data. rv/iv 0.85->0.70, friction cap 1.55->1.90%, liquid contracts 6->4, time-to-close 75->45min. Directional thresholds roughly halved (trend 0.40->0.20, vwap 0.06->0.03, adx 22->15) and realised_edge moved from mandatory into the any-of tier at 1.05. What is deliberately NOT relaxed: stops, targets, position sizing, the 1.5% risk cap, the 3%/day halt, the kill switch. Cost and liquidity floors are eased but kept, because trades filled at 3% friction on an illiquid strike produce garbage data, not learning.
 
 ## Performance
 
@@ -13,7 +13,8 @@ Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) Th
 
 | v | name | status | created |
 |---|---|---|---|
-| 1 | V1_Liquid_RVoverIV_NextWeekly | ACTIVE | 2026-07-24T23:33:27+05:30 |
+| 2 | V3_WideOpen_HardRiskOnly | ACTIVE | 2026-07-28T10:24:24+05:30 |
+| 1 | V1_Liquid_RVoverIV_NextWeekly | RETIRED | 2026-07-24T23:33:27+05:30 |
 
 ## Reviews
 
