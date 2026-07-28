@@ -1,0 +1,33 @@
+name: install-kronos-live
+
+# Run this ONCE, by hand, from the Actions tab. It will NOT run on a
+# schedule - you have to click the button yourself.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Add Kronos to the live strategy
+        run: python install_kronos_live.py
+
+      - name: Save the change back to GitHub
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add state/
+          git diff --cached --quiet && echo "Nothing changed, nothing to commit" || \
+            git commit -m "Install: add Kronos as an extra 'any' vote in the live strategy"
+          git push
