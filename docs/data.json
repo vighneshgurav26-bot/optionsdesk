@@ -266,6 +266,17 @@
  ],
  "reviews": [
   {
+   "id": 8,
+   "ts": "2026-07-29T17:17:49+05:30",
+   "trigger": "idle",
+   "from_version": 2,
+   "to_version": 2,
+   "stats": "{\"trades\": 0, \"note\": \"no trades generated\"}",
+   "lessons": "After multiple relaxation cycles across two strategy versions, zero trades have been generated across all sessions observed. The blocked-and-skipped log confirms the market itself is not the problem: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, and trend_score=0.555 \u2014 every individually meaningful condition was acceptable, yet no trade fired. The current V3 'any-of' directional tier still requires at least one of seven conditions to be true; on the 12:22 scan trend_score=0.141 on NIFTY failed the 0.20 threshold, and no other 'any' condition apparently cleared, meaning even a substantially relaxed conjunctive bundle still produces zero fires. The core structural problem is that the 'all' hard gates (rv/iv, friction, liquid_contracts, minutes_to_close) combined with the 'any' soft tier still produce a joint intraday probability near zero across a 2-4 name universe scanned 5-6 times per day. Four successive reviews identified this correctly; four successive proposals were rejected for lacking 20 trades \u2014 a circular dependency that is itself the failure, not the market conditions. At zero trades, there is no MFE, MAE, theta-bleed, or exit-reason data to analyse; the only honest reading of the evidence is that the filter architecture must be restructured, not merely further relaxed.",
+   "changes": "proposal rejected: only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "raw": "{\"review\": {\"lessons\": \"After multiple relaxation cycles across two strategy versions, zero trades have been generated across all sessions observed. The blocked-and-skipped log confirms the market itself is not the problem: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, and trend_score=0.555 \\u2014 every individually meaningful condition was acceptable, yet no trade fired. The current V3 'any-of' directional tier still requires at least one of seven conditions to be true; on the 12:22 scan trend_score=0.141 on NIFTY failed the 0.20 threshold, and no other 'any' condition apparently cleared, meaning even a substantially relaxed conjunctive bundle still produces zero fires. The core structural problem is that the 'all' hard gates (rv/iv, friction, liquid_contracts, minutes_to_close) combined with the 'any' soft tier still produce a joint intraday probability near zero across a 2-4 name universe scanned 5-6 times per day. Four successive reviews identified this correctly; four successive proposals were rejected for lacking 20 trades \\u2014 a circular dependency that is itself the failure, not the market conditions. At zero trades, there is no MFE, MAE, theta-bleed, or exit-reason data to analyse; the only honest reading of the evidence is that the filter architecture must be restructured, not merely further relaxed.\", \"diagnosis\": \"The 'any-of' directional tier is still conjunctively over-constrained relative to the universe size and scan frequency: even with thresholds halved, the seven-condition 'any' block fails to fire because adx_proxy alone (>15, direction-neutral) and realised_edge_ratio alone should almost always be true on a liquid index session, yet they are not clearing \\u2014 suggesting either feature computation is broken or the conditions are still individually too tight. The strategy cannot generate a single trade observation, making all other design questions unanswerable.\", \"action\": \"TWEAK\", \"changes\": \"1) Make adx_proxy the sole mandatory directional gate in the 'all' block at a threshold of 12 (trending market, not direction-specific) \\u2014 this replaces the 'any-of' tier entirely for the purpose of getting entries to fire. 2) Separately gate direction (call vs put) using only trend_score sign OR vwap_dev_pct sign, with no minimum magnitude threshold \\u2014 any non-zero lean is sufficient when adx_proxy confirms movement. 3) Move realised_edge_ratio > 1.0 back into the 'all' block as a hard gate, since the 12:22 log showed edge=2.6 clearing easily on both names \\u2014 this is a filter that empirically passes. 4) Remove the liquid_contracts >= 4 condition from the 'all' block; the upstream screener already enforces liquidity, and this condition may be double-counting or miscalibrated. 5) Reduce minutes_to_close from 45 to 30 to recover the 14:45 no-new cutoff window. 6) Keep all hard risk ceilings, stops, targets, and sizing unchanged. The goal of this tweak is exclusively to generate the first 10-15 trade observations so subsequent reviews have actual data; no performance claim is made.\", \"confidence\": 0.72}, \"proposal\": {\"name\": \"V4_MustFire_DataCollection\", \"rationale\": \"Zero trades after extensive relaxation means the 'any-of' directional tier is the structural blocker. V4 eliminates it entirely: direction is gated only by trend_score sign (call: >0, put: <0) in the 'all' block alongside adx_proxy>=12 (confirms movement exists), realised_edge_ratio>=1.0 (empirically clears on liquid sessions), rv_iv_ratio>=0.70 and atm_total_friction_pct<1.90 (cost-regime floors unchanged). liquid_contracts gate removed \\u2014 upstream screener already enforces this and it may be miscalibrated. The 12:22 log showed edge=2.6-2.9 and rv/iv=0.98-1.25 clearing comfortably on both index names; adx>=12 and trend_score!=0 should close the final gap. Single structural change per version so the next review can isolate causality.\", \"universe\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"], \"session\": {\"start\": \"09:30\", \"no_new_after\": \"14:45\", \"force_exit\": \"15:15\"}, \"selection\": {\"expiry\": \"skip_expiry_day\", \"delta_band\": [0.3, 0.65], \"max_spread_pct\": 0.9, \"min_oi\": 100000, \"max_premium_per_lot\": 60000}, \"entry_long_call\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.7}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.9}, {\"feature\": \"realised_edge_ratio\", \"op\": \">\", \"value\": 1.0}, {\"feature\": \"adx_proxy\", \"op\": \">=\", \"value\": 12}, {\"feature\": \"trend_score\", \"op\": \">\", \"value\": 0.0}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 30}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.5}, {\"feature\": \"atm_one_tick_pct\", \"op\": \">\", \"value\": 0.25}]}, \"entry_long_put\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.7}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.9}, {\"feature\": \"realised_edge_ratio\", \"op\": \">\", \"value\": 1.0}, {\"feature\": \"adx_proxy\", \"op\": \">=\", \"value\": 12}, {\"feature\": \"trend_score\", \"op\": \"<\", \"value\": 0.0}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 30}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.5}, {\"feature\": \"atm_one_tick_pct\", \"op\": \">\", \"value\": 0.25}]}, \"exit\": {\"target_pct\": 26.0, \"stop_pct\": 14.0, \"trail_after_pct\": 15.0, \"trail_giveback_pct\": 40.0, \"time_stop_min\": 50, \"iv_crush_exit_pct\": 8.0, \"underlying_invalidation\": {\"feature\": \"vwap_dev_pct\", \"flip\": true}}, \"sizing\": {\"risk_per_trade_pct\": 1.5, \"max_lots\": 3, \"max_premium_pct\": 20.0}, \"risk\": {\"daily_loss_pct\": 3.0, \"max_trades_day\": 6, \"max_concurrent\": 2, \"cooldown_min_after_loss\": 20}}}"
+  },
+  {
    "id": 7,
    "ts": "2026-07-28T09:49:07+05:30",
    "trigger": "idle",
@@ -344,6 +355,42 @@
   }
  ],
  "journal": [
+  {
+   "id": 126,
+   "ts": "2026-07-29T17:17:49+05:30",
+   "kind": "STRATEGY",
+   "symbol": "",
+   "headline": "Rejected proposal 'V4_MustFire_DataCollection'",
+   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 32, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
+  },
+  {
+   "id": 125,
+   "ts": "2026-07-29T17:17:49+05:30",
+   "kind": "REVIEW",
+   "symbol": "",
+   "headline": "v2 review: TWEAK",
+   "detail": "After multiple relaxation cycles across two strategy versions, zero trades have been generated across all sessions observed. The blocked-and-skipped log confirms the market itself is not the problem: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, and trend_score=0.555 \u2014 every individually meaningful condition was acceptable, yet no trade fired. The current V3 'any-of' directional tier still requires at least one of seven conditions to be true; on the 12:22 scan trend_score=0.141 on NIFTY failed the 0.20 threshold, and no other 'any' condition apparently cleared, meaning even a substantially relaxed conjunctive bundle still produces zero fires. The core structural problem is that the 'all' hard gates (rv/iv, friction, liquid_contracts, minutes_to_close) combined with the 'any' soft tier still produce a joint intraday probability near zero across a 2-4 name universe scanned 5-6 times per day. Four successive reviews identified this correctly; four successive proposals were rejected for lacking 20 trades \u2014 a circular dependency that is itself the failure, not the market conditions. At zero trades, there is no MFE, MAE, theta-bleed, or exit-reason data to analyse; the only honest reading of the evidence is that the filter architecture must be restructured, not merely further relaxed.\n\nDIAGNOSIS: The 'any-of' directional tier is still conjunctively over-constrained relative to the universe size and scan frequency: even with thresholds halved, the seven",
+   "payload": "{}"
+  },
+  {
+   "id": 124,
+   "ts": "2026-07-29T17:17:49+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Wed 29 Jul 17:17 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 123,
+   "ts": "2026-07-29T17:17:49+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
   {
    "id": 122,
    "ts": "2026-07-29T15:00:04+05:30",
@@ -1386,42 +1433,6 @@
    "symbol": "RELIANCE",
    "headline": "RELIANCE: no usable chain",
    "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 6,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "BANKNIFTY",
-   "headline": "BANKNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 5,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "NIFTY",
-   "headline": "NIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 4,
-   "ts": "2026-07-27T11:09:53+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from nse_csv",
-   "detail": "211 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 3,
-   "ts": "2026-07-25T00:02:20+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Sat 25 Jul 00:02 IST",
    "payload": "{}"
   }
  ]
