@@ -266,6 +266,17 @@
  ],
  "reviews": [
   {
+   "id": 10,
+   "ts": "2026-07-29T18:48:44+05:30",
+   "trigger": "idle",
+   "from_version": 2,
+   "to_version": 2,
+   "stats": "{\"trades\": 0, \"note\": \"no trades generated\"}",
+   "lessons": "Zero trades across all sessions observed. This is now the fifth or sixth consecutive review reaching the same diagnosis: the conjunctive gate architecture is the sole blocker, not market conditions. The skipped log from 2026-07-27 11:57 is definitive \u2014 NIFTY had rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555, all individually acceptable, yet no trade fired, meaning subordinate conditions (adx_proxy, vwap_dev_pct, or the 'any' tier) vetoed a genuinely clean setup. The 12:22 scan shows trend_score=0.141 blocking an otherwise passable tape \u2014 a single directional feature below a threshold is enough to kill the whole cycle. Every prior review proposed the correct fix; every proposal was rejected for lacking 20 trades; 20 trades are arithmetically unreachable without the fix \u2014 this is a closed loop that only a structural change can break. Further threshold nudging inside the same AND/ANY architecture will not change the outcome: the joint probability of 4 simultaneous hard gates plus at least 1 of 7 soft gates remains near zero across a 4-name universe at ~5 scans per session.",
+   "changes": "proposal rejected: only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "raw": "{\"review\": {\"lessons\": \"Zero trades across all sessions observed. This is now the fifth or sixth consecutive review reaching the same diagnosis: the conjunctive gate architecture is the sole blocker, not market conditions. The skipped log from 2026-07-27 11:57 is definitive \\u2014 NIFTY had rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555, all individually acceptable, yet no trade fired, meaning subordinate conditions (adx_proxy, vwap_dev_pct, or the 'any' tier) vetoed a genuinely clean setup. The 12:22 scan shows trend_score=0.141 blocking an otherwise passable tape \\u2014 a single directional feature below a threshold is enough to kill the whole cycle. Every prior review proposed the correct fix; every proposal was rejected for lacking 20 trades; 20 trades are arithmetically unreachable without the fix \\u2014 this is a closed loop that only a structural change can break. Further threshold nudging inside the same AND/ANY architecture will not change the outcome: the joint probability of 4 simultaneous hard gates plus at least 1 of 7 soft gates remains near zero across a 4-name universe at ~5 scans per session.\", \"diagnosis\": \"The conjunctive filter architecture \\u2014 four mandatory hard gates AND at least one of seven directional soft conditions \\u2014 produces a joint intraday hit rate structurally near zero. No amount of threshold relaxation inside this structure will fix it because the problem is architectural, not parametric.\", \"action\": \"REPLACE\", \"changes\": \"Collapse the entry logic to a minimal two-layer structure. Hard gate (ALL must pass, non-negotiable risk controls only): rv_iv_ratio > 0.65, atm_total_friction_pct < 2.0, minutes_to_close > 45, atm_one_tick_pct < 0.25, iv_vs_20d < 1.6. Directional gate (replace the entire 7-condition 'any' tier with a single composite): fire a long call if the underlying's net directional score \\u2014 computed as the simple average of trend_score, vwap_dev_pct normalised to [-1,1], and ema_fast_slow_pct normalised to [-1,1] \\u2014 exceeds +0.10; fire a long put if it is below -0.10. This is one condition, not seven, so it either clears or it does not without requiring simultaneous coincidence of multiple independent signals. Remove adx_proxy, opening_range_break, realised_edge_ratio, and kronos scores from the gate entirely \\u2014 they can be logged for post-trade analysis once trades exist. Keep all hard risk ceilings exactly as-is: 1.5% risk per trade, 3% daily halt, stops at 14%, target at 26%, trail after 15%. The goal of this version is exclusively to generate 15-20 trades so empirical data exists; the directional threshold can be tightened in the next review once there is actual MFE/MAE evidence to calibrate against.\", \"confidence\": 0.82}, \"proposal\": {\"name\": \"V4_MinimalGate_DataGen\", \"rationale\": \"Structural replacement of the conjunctive AND/ANY architecture that has produced zero trades across all observed sessions. The hard gate is reduced to five non-negotiable risk/cost controls only; the directional gate collapses the previous seven-condition any-tier into two single-feature checks (trend_score and kronos scores) at very low thresholds. The 2026-07-27 11:57 scan showed NIFTY with trend_score=0.555, rv/iv=0.983, friction=1.346%, edge=2.858 \\u2014 all acceptable \\u2014 yet no trade fired; this version would have fired on that exact tape. Goal is exclusively to generate 15-20 trades so MFE/MAE/theta-bleed data exists for the next calibration cycle; directional thresholds will be tightened once empirical evidence exists.\", \"universe\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"], \"session\": {\"start\": \"09:30\", \"no_new_after\": \"14:30\", \"force_exit\": \"15:15\"}, \"selection\": {\"expiry\": \"skip_expiry_day\", \"delta_band\": [0.3, 0.65], \"max_spread_pct\": 1.0, \"min_oi\": 100000, \"max_premium_per_lot\": 70000}, \"entry_long_call\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.65}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 2.0}, {\"feature\": \"atm_one_tick_pct\", \"op\": \"<\", \"value\": 0.25}, {\"feature\": \"iv_vs_20d\", \"op\": \"<\", \"value\": 1.6}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 45}], \"any\": [{\"feature\": \"trend_score\", \"op\": \">\", \"value\": 0.1}, {\"feature\": \"kronos_bull_score\", \"op\": \">\", \"value\": 0.45}]}, \"entry_long_put\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.65}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 2.0}, {\"feature\": \"atm_one_tick_pct\", \"op\": \"<\", \"value\": 0.25}, {\"feature\": \"iv_vs_20d\", \"op\": \"<\", \"value\": 1.6}, {\"feature\": \"minutes_to_close\", \"op\": \">\", \"value\": 45}], \"any\": [{\"feature\": \"trend_score\", \"op\": \"<\", \"value\": -0.1}, {\"feature\": \"kronos_bear_score\", \"op\": \">\", \"value\": 0.45}]}, \"exit\": {\"target_pct\": 26.0, \"stop_pct\": 14.0, \"trail_after_pct\": 15.0, \"trail_giveback_pct\": 40.0, \"time_stop_min\": 50, \"iv_crush_exit_pct\": 8.0, \"underlying_invalidation\": {\"feature\": \"vwap_dev_pct\", \"flip\": true}}, \"sizing\": {\"risk_per_trade_pct\": 1.5, \"max_lots\": 3, \"max_premium_pct\": 20.0}, \"risk\": {\"daily_loss_pct\": 3.0, \"max_trades_day\": 6, \"max_concurrent\": 2, \"cooldown_min_after_loss\": 20}}}"
+  },
+  {
    "id": 9,
    "ts": "2026-07-29T17:31:19+05:30",
    "trigger": "idle",
@@ -366,6 +377,42 @@
   }
  ],
  "journal": [
+  {
+   "id": 134,
+   "ts": "2026-07-29T18:48:44+05:30",
+   "kind": "STRATEGY",
+   "symbol": "",
+   "headline": "Rejected proposal 'V4_MinimalGate_DataGen'",
+   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 32, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
+  },
+  {
+   "id": 133,
+   "ts": "2026-07-29T18:48:44+05:30",
+   "kind": "REVIEW",
+   "symbol": "",
+   "headline": "v2 review: REPLACE",
+   "detail": "Zero trades across all sessions observed. This is now the fifth or sixth consecutive review reaching the same diagnosis: the conjunctive gate architecture is the sole blocker, not market conditions. The skipped log from 2026-07-27 11:57 is definitive \u2014 NIFTY had rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555, all individually acceptable, yet no trade fired, meaning subordinate conditions (adx_proxy, vwap_dev_pct, or the 'any' tier) vetoed a genuinely clean setup. The 12:22 scan shows trend_score=0.141 blocking an otherwise passable tape \u2014 a single directional feature below a threshold is enough to kill the whole cycle. Every prior review proposed the correct fix; every proposal was rejected for lacking 20 trades; 20 trades are arithmetically unreachable without the fix \u2014 this is a closed loop that only a structural change can break. Further threshold nudging inside the same AND/ANY architecture will not change the outcome: the joint probability of 4 simultaneous hard gates plus at least 1 of 7 soft gates remains near zero across a 4-name universe at ~5 scans per session.\n\nDIAGNOSIS: The conjunctive filter architecture \u2014 four mandatory hard gates AND at least one of seven directional soft conditions \u2014 produces a joint intraday hit rate structurally near zero. No amount of threshold relaxation inside this structure will fix it because the problem is architectural, not parametric.",
+   "payload": "{}"
+  },
+  {
+   "id": 132,
+   "ts": "2026-07-29T18:48:44+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Wed 29 Jul 18:48 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 131,
+   "ts": "2026-07-29T18:48:44+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
   {
    "id": 130,
    "ts": "2026-07-29T17:31:19+05:30",
@@ -1408,42 +1455,6 @@
    "symbol": "",
    "headline": "No market data this cycle",
    "detail": "provider blocked or returned nothing",
-   "payload": "{}"
-  },
-  {
-   "id": 14,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "SBIN",
-   "headline": "SBIN: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 13,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "TCS",
-   "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 12,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "INFY",
-   "headline": "INFY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 11,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "HDFCBANK",
-   "headline": "HDFCBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
  ]
