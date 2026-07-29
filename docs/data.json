@@ -345,6 +345,114 @@
  ],
  "journal": [
   {
+   "id": 122,
+   "ts": "2026-07-29T15:00:04+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 121,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 120,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 119,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 118,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 117,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 116,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 115,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 114,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 113,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 112,
+   "ts": "2026-07-29T15:00:04.484453+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 111,
+   "ts": "2026-07-29T15:00:04+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 110,
    "ts": "2026-07-29T12:10:42+05:30",
    "kind": "IDLE",
@@ -1314,24 +1422,6 @@
    "symbol": "",
    "headline": "Market closed",
    "detail": "Sat 25 Jul 00:02 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 2,
-   "ts": "2026-07-25T00:02:20+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from nse_csv",
-   "detail": "211 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 1,
-   "ts": "2026-07-24T23:33:27+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Installed v1 calibrated on live Kite data",
-   "detail": "Calibrated on live NIFTY books, 24-Jul-2026. Three measurements drove it. (1) The front expiry with 2 sessions left bled 18.2% of premium per session versus 5.9% on the next weekly, so this avoids any expiry with under 3 sessions left. (2) Round-trip friction on liquid near-ATM index calls ran 0.96-1.29%, but jumped past 2% on sub-Rs60 premiums, so the premium floor does more work than any OI filt",
    "payload": "{}"
   }
  ]
