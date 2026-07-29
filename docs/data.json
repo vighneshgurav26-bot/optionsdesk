@@ -266,6 +266,17 @@
  ],
  "reviews": [
   {
+   "id": 9,
+   "ts": "2026-07-29T17:31:19+05:30",
+   "trigger": "idle",
+   "from_version": 2,
+   "to_version": 2,
+   "stats": "{\"trades\": 0, \"note\": \"no trades generated\"}",
+   "lessons": "Seven review cycles, zero trades, zero empirical data. The blocked-and-skipped log is the only evidence and it is dispositive: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555 \u2014 conditions that are individually and jointly acceptable \u2014 yet no trade fired, almost certainly because the 'any-of' tier still failed to return a single true condition simultaneously with all four 'all' gates. The V3 relaxation was structurally insufficient: dropping thresholds by half while keeping a conjunctive 'all' gate of four simultaneous conditions plus a disjunctive 'any' tier of seven more still produces a joint daily hit rate near zero across a 4-name universe scanned 5-6 times per session. The rejection loop \u2014 'need 20 trades to approve, but strategy cannot reach 20 trades without approval' \u2014 is self-sealing and must be broken by architectural change, not further threshold nudging. The system's own standing instruction is unambiguous: a strategy that never fires learns nothing, and continued micro-relaxation of the same conjunctive structure is not a meaningful response to that instruction. The only honest diagnosis is that the filter architecture itself must change: the 'all' hard gate must shrink to the minimum necessary risk controls, and directional conditions must be collapsed to a single, low-bar confirmation rather than a conjunctive bundle.",
+   "changes": "proposal rejected: only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "raw": "{\"review\": {\"lessons\": \"Seven review cycles, zero trades, zero empirical data. The blocked-and-skipped log is the only evidence and it is dispositive: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555 \\u2014 conditions that are individually and jointly acceptable \\u2014 yet no trade fired, almost certainly because the 'any-of' tier still failed to return a single true condition simultaneously with all four 'all' gates. The V3 relaxation was structurally insufficient: dropping thresholds by half while keeping a conjunctive 'all' gate of four simultaneous conditions plus a disjunctive 'any' tier of seven more still produces a joint daily hit rate near zero across a 4-name universe scanned 5-6 times per session. The rejection loop \\u2014 'need 20 trades to approve, but strategy cannot reach 20 trades without approval' \\u2014 is self-sealing and must be broken by architectural change, not further threshold nudging. The system's own standing instruction is unambiguous: a strategy that never fires learns nothing, and continued micro-relaxation of the same conjunctive structure is not a meaningful response to that instruction. The only honest diagnosis is that the filter architecture itself must change: the 'all' hard gate must shrink to the minimum necessary risk controls, and directional conditions must be collapsed to a single, low-bar confirmation rather than a conjunctive bundle.\", \"diagnosis\": \"The 'all' gate combined with the 'any' tier creates a joint probability near zero: four simultaneous hard conditions must all clear AND at least one of seven soft conditions must also clear, across only 4 names, 5-6 scans per day. This is an arithmetic impossibility masquerading as a signal filter, and seven consecutive cycles of threshold nudging have not and cannot fix it.\", \"action\": \"REPLACE\", \"changes\": \"Collapse the entry logic to a minimal two-condition 'all' gate: (1) rv_iv_ratio > 0.70 and (2) atm_total_friction_pct < 1.90. Remove liquid_contracts and minutes_to_close from the hard gate entirely \\u2014 minutes_to_close is already covered by the session no_new_after cutoff at 14:45, and liquid_contracts is enforced upstream by the screener. Replace the seven-condition 'any' tier with a single condition: trend_score > 0.20 for calls, trend_score < -0.20 for puts. Keep all hard risk ceilings exactly as-is: 1.5% risk per trade, 3% daily halt, stops at 14%, targets at 26%, max 4 lots, max 2 concurrent. The rationale is not that signals do not matter \\u2014 it is that we have zero trades and therefore zero evidence about which signals matter; the correct response is to fire trades under the minimum credible risk-controlled conditions, observe what actually happens, and then tighten based on real exit-reason and MFE/MAE data. One confirming condition (trend_score) is enough to distinguish 'random entry' from 'directional entry'; everything else is overfitting a prior that has never been tested. If this still produces zero trades after two full sessions, drop trend_score from the 'all' gate and enter on rv_iv and friction alone \\u2014 the hard stops are the real risk control, not the entry filter.\", \"confidence\": 0.82}, \"proposal\": {\"name\": \"V4_MinimalGate_FireFirst\", \"rationale\": \"Seven cycles, zero trades. The review diagnosis is dispositive: a conjunctive four-condition 'all' gate plus a seven-condition 'any' tier produces a joint daily hit rate near zero across 4 names and 5-6 scans. This version collapses the 'all' gate to exactly two conditions (rv_iv_ratio > 0.70, atm_total_friction_pct < 1.90) and replaces the seven-condition 'any' tier with a single directional confirmation (trend_score threshold). The hard stops, daily halt, and sizing constraints are unchanged \\u2014 the stops are the real risk control. One trade fired under real conditions produces more information than seven cycles of zero-trade data. If this still does not fire after two full sessions, trend_score will be dropped next.\", \"universe\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"], \"session\": {\"start\": \"09:30\", \"no_new_after\": \"14:45\", \"force_exit\": \"15:15\"}, \"selection\": {\"expiry\": \"skip_expiry_day\", \"delta_band\": [0.3, 0.65], \"max_spread_pct\": 1.2, \"min_oi\": 50000, \"max_premium_per_lot\": 70000}, \"entry_long_call\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.7}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.9}, {\"feature\": \"trend_score\", \"op\": \">\", \"value\": 0.15}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.6}]}, \"entry_long_put\": {\"all\": [{\"feature\": \"rv_iv_ratio\", \"op\": \">\", \"value\": 0.7}, {\"feature\": \"atm_total_friction_pct\", \"op\": \"<\", \"value\": 1.9}, {\"feature\": \"trend_score\", \"op\": \"<\", \"value\": -0.15}], \"none\": [{\"feature\": \"iv_vs_20d\", \"op\": \">\", \"value\": 1.6}]}, \"exit\": {\"target_pct\": 26.0, \"stop_pct\": 14.0, \"trail_after_pct\": 15.0, \"trail_giveback_pct\": 40.0, \"time_stop_min\": 50, \"iv_crush_exit_pct\": 8.0, \"underlying_invalidation\": {\"feature\": \"trend_score\", \"flip\": true}}, \"sizing\": {\"risk_per_trade_pct\": 1.5, \"max_lots\": 3, \"max_premium_pct\": 20.0}, \"risk\": {\"daily_loss_pct\": 3.0, \"max_trades_day\": 6, \"max_concurrent\": 2, \"cooldown_min_after_loss\": 20}}}"
+  },
+  {
    "id": 8,
    "ts": "2026-07-29T17:17:49+05:30",
    "trigger": "idle",
@@ -355,6 +366,42 @@
   }
  ],
  "journal": [
+  {
+   "id": 130,
+   "ts": "2026-07-29T17:31:19+05:30",
+   "kind": "STRATEGY",
+   "symbol": "",
+   "headline": "Rejected proposal 'V4_MinimalGate_FireFirst'",
+   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
+   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 32, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
+  },
+  {
+   "id": 129,
+   "ts": "2026-07-29T17:31:19+05:30",
+   "kind": "REVIEW",
+   "symbol": "",
+   "headline": "v2 review: REPLACE",
+   "detail": "Seven review cycles, zero trades, zero empirical data. The blocked-and-skipped log is the only evidence and it is dispositive: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555 \u2014 conditions that are individually and jointly acceptable \u2014 yet no trade fired, almost certainly because the 'any-of' tier still failed to return a single true condition simultaneously with all four 'all' gates. The V3 relaxation was structurally insufficient: dropping thresholds by half while keeping a conjunctive 'all' gate of four simultaneous conditions plus a disjunctive 'any' tier of seven more still produces a joint daily hit rate near zero across a 4-name universe scanned 5-6 times per session. The rejection loop \u2014 'need 20 trades to approve, but strategy cannot reach 20 trades without approval' \u2014 is self-sealing and must be broken by architectural change, not further threshold nudging. The system's own standing instruction is unambiguous: a strategy that never fires learns nothing, and continued micro-relaxation of the same conjunctive structure is not a meaningful response to that instruction. The only honest diagnosis is that the filter architecture itself must change: the 'all' hard gate must shrink to the minimum necessary risk controls, and directional conditions must be collapsed to a single, low-bar confirmation rather than a conjunctive bundle.\n\nDIAGNOSIS: The 'all' gate combined with the 'any' tier creates a joint probability near zero: four",
+   "payload": "{}"
+  },
+  {
+   "id": 128,
+   "ts": "2026-07-29T17:31:19+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Wed 29 Jul 17:31 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 127,
+   "ts": "2026-07-29T17:31:19+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
   {
    "id": 126,
    "ts": "2026-07-29T17:17:49+05:30",
@@ -1396,42 +1443,6 @@
    "kind": "DATA",
    "symbol": "HDFCBANK",
    "headline": "HDFCBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 10,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "MIDCPNIFTY",
-   "headline": "MIDCPNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 9,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "FINNIFTY",
-   "headline": "FINNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 8,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "ICICIBANK",
-   "headline": "ICICIBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 7,
-   "ts": "2026-07-27T11:09:53.454557+05:30",
-   "kind": "DATA",
-   "symbol": "RELIANCE",
-   "headline": "RELIANCE: no usable chain",
    "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
