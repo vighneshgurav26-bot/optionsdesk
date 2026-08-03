@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 250,
+   "ts": "2026-08-03T13:08:05+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 249,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 248,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 247,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 246,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 245,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 244,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 243,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 242,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 241,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 240,
+   "ts": "2026-08-03T13:08:05.596778+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 239,
+   "ts": "2026-08-03T13:08:05+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 238,
    "ts": "2026-08-03T12:17:42+05:30",
    "kind": "IDLE",
@@ -1363,114 +1471,6 @@
    "symbol": "",
    "headline": "Lot sizes from kite",
    "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 130,
-   "ts": "2026-07-29T17:31:19+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_MinimalGate_FireFirst'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 32, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
-  },
-  {
-   "id": 129,
-   "ts": "2026-07-29T17:31:19+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Seven review cycles, zero trades, zero empirical data. The blocked-and-skipped log is the only evidence and it is dispositive: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, trend_score=0.555 \u2014 conditions that are individually and jointly acceptable \u2014 yet no trade fired, almost certainly because the 'any-of' tier still failed to return a single true condition simultaneously with all four 'all' gates. The V3 relaxation was structurally insufficient: dropping thresholds by half while keeping a conjunctive 'all' gate of four simultaneous conditions plus a disjunctive 'any' tier of seven more still produces a joint daily hit rate near zero across a 4-name universe scanned 5-6 times per session. The rejection loop \u2014 'need 20 trades to approve, but strategy cannot reach 20 trades without approval' \u2014 is self-sealing and must be broken by architectural change, not further threshold nudging. The system's own standing instruction is unambiguous: a strategy that never fires learns nothing, and continued micro-relaxation of the same conjunctive structure is not a meaningful response to that instruction. The only honest diagnosis is that the filter architecture itself must change: the 'all' hard gate must shrink to the minimum necessary risk controls, and directional conditions must be collapsed to a single, low-bar confirmation rather than a conjunctive bundle.\n\nDIAGNOSIS: The 'all' gate combined with the 'any' tier creates a joint probability near zero: four",
-   "payload": "{}"
-  },
-  {
-   "id": 128,
-   "ts": "2026-07-29T17:31:19+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Wed 29 Jul 17:31 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 127,
-   "ts": "2026-07-29T17:31:19+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 126,
-   "ts": "2026-07-29T17:17:49+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_MustFire_DataCollection'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 32, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\", \"RELIANCE\", \"ICICIBANK\"]}}"
-  },
-  {
-   "id": 125,
-   "ts": "2026-07-29T17:17:49+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: TWEAK",
-   "detail": "After multiple relaxation cycles across two strategy versions, zero trades have been generated across all sessions observed. The blocked-and-skipped log confirms the market itself is not the problem: on 2026-07-27 11:57, NIFTY showed rv/iv=0.983, friction=1.346%, edge=2.858, and trend_score=0.555 \u2014 every individually meaningful condition was acceptable, yet no trade fired. The current V3 'any-of' directional tier still requires at least one of seven conditions to be true; on the 12:22 scan trend_score=0.141 on NIFTY failed the 0.20 threshold, and no other 'any' condition apparently cleared, meaning even a substantially relaxed conjunctive bundle still produces zero fires. The core structural problem is that the 'all' hard gates (rv/iv, friction, liquid_contracts, minutes_to_close) combined with the 'any' soft tier still produce a joint intraday probability near zero across a 2-4 name universe scanned 5-6 times per day. Four successive reviews identified this correctly; four successive proposals were rejected for lacking 20 trades \u2014 a circular dependency that is itself the failure, not the market conditions. At zero trades, there is no MFE, MAE, theta-bleed, or exit-reason data to analyse; the only honest reading of the evidence is that the filter architecture must be restructured, not merely further relaxed.\n\nDIAGNOSIS: The 'any-of' directional tier is still conjunctively over-constrained relative to the universe size and scan frequency: even with thresholds halved, the seven",
-   "payload": "{}"
-  },
-  {
-   "id": 124,
-   "ts": "2026-07-29T17:17:49+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Wed 29 Jul 17:17 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 123,
-   "ts": "2026-07-29T17:17:49+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 122,
-   "ts": "2026-07-29T15:00:04+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "No market data this cycle",
-   "detail": "provider blocked or returned nothing",
-   "payload": "{}"
-  },
-  {
-   "id": 121,
-   "ts": "2026-07-29T15:00:04.484453+05:30",
-   "kind": "DATA",
-   "symbol": "SBIN",
-   "headline": "SBIN: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 120,
-   "ts": "2026-07-29T15:00:04.484453+05:30",
-   "kind": "DATA",
-   "symbol": "TCS",
-   "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 119,
-   "ts": "2026-07-29T15:00:04.484453+05:30",
-   "kind": "DATA",
-   "symbol": "INFY",
-   "headline": "INFY: no usable chain",
-   "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
  ]
