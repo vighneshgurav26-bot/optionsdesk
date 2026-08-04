@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 298,
+   "ts": "2026-08-04T14:58:02+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 297,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 296,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 295,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 294,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 293,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 292,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 291,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 290,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 289,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 288,
+   "ts": "2026-08-04T14:58:02.834169+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 287,
+   "ts": "2026-08-04T14:58:02+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 286,
    "ts": "2026-08-04T12:06:23+05:30",
    "kind": "IDLE",
@@ -1359,114 +1467,6 @@
   {
    "id": 179,
    "ts": "2026-07-31T12:04:19+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 178,
-   "ts": "2026-07-30T18:41:45+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_DepthFix'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 177,
-   "ts": "2026-07-30T18:41:45+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Four review cycles have produced identical findings and identical rejections \u2014 the rejection mechanism itself is now the primary failure. The evidence is unambiguous: on 2026-07-30 at 11:43, INFY showed rv/iv=2.006, friction=0.856%, a clean directional signal, and was blocked purely because a 1600-lot order exceeded 50% of resting offer depth on a single-stock book. TCS was blocked identically at 900 lots. These are not signal failures \u2014 they are two confirmed structural failures running simultaneously: (1) the conjunctive 'all' gate still requires 4 hard conditions to clear simultaneously across a tiny 4-name universe, and (2) the sizing engine generates lot counts that dwarf single-stock option book depth regardless of signal quality. The circular rejection logic \u2014 'need 20 trades to approve a fix, cannot reach 20 trades without fixing' \u2014 has now been explicitly identified in every past review and explicitly rejected every time by a downstream gate that demands trade data the architecture cannot produce. Continuing to apply that gate is not risk management; it is an infinite loop.\n\nDIAGNOSIS: The sizing engine produces orders (900\u20131600 lots) that consume more than 50% of resting offer depth on single-stock option books, triggering the liquidity gate on every attempted entry. This is a structural mismatch between lot-size arithmetic and the universe chosen \u2014 single-stock names simply do not carry enough resting depth at option strikes to absorb the desk's minimum clip. Switc",
-   "payload": "{}"
-  },
-  {
-   "id": 176,
-   "ts": "2026-07-30T18:41:45+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Thu 30 Jul 18:41 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 175,
-   "ts": "2026-07-30T18:41:45+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 174,
-   "ts": "2026-07-30T17:21:57+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_MinimalGate'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 173,
-   "ts": "2026-07-30T17:21:57+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Four consecutive review cycles have produced identical findings and identical rejections \u2014 this is itself the primary evidence. The 11:43 log on 2026-07-30 is definitive: INFY rv/iv=2.006, friction=0.856%, clean directional signal, blocked solely by order-size exceeding 50% of resting offer depth at 1600 lots; TCS blocked identically at 900 lots. Two independent structural failures are confirmed: (1) the conjunctive 'all' gate still requires 4 simultaneous hard conditions, producing near-zero joint hit probability across a 4-name universe; (2) the sizing engine generates orders that are multiples of available single-stock option book depth regardless of signal quality. The circular rejection logic \u2014 'need 20 trades to validate, cannot reach 20 trades without fixing' \u2014 has now persisted across every version and is arithmetically self-sealing. No amount of threshold relaxation within the current architecture resolves a structural depth mismatch; the fix requires dropping single-stock names entirely in favour of index options where lot sizes are manageable, and reducing the 'all' gate to cost-and-time only.\n\nDIAGNOSIS: The sizing engine is generating single-stock option orders (900\u20131600 lots) that exceed available offer-side depth, blocking every single-stock trade regardless of signal quality; simultaneously the strategy universe includes names (TCS, INFY) that the screening system is passing to signal logic but whose option books cannot absorb the minimum order size at any str",
-   "payload": "{}"
-  },
-  {
-   "id": 172,
-   "ts": "2026-07-30T17:21:57+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Thu 30 Jul 17:21 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 171,
-   "ts": "2026-07-30T17:21:57+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 170,
-   "ts": "2026-07-30T16:55:24+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_SizeFixed'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 169,
-   "ts": "2026-07-30T16:55:24+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Nine consecutive review cycles, zero trades, same diagnosis each time. The 2026-07-30 11:43 log is definitive: INFY rv/iv=2.006, friction=0.856%, clean PUT signal, blocked purely because a 1600-lot order exceeded 50% of resting offer depth \u2014 not a signal failure, a sizing failure. TCS blocked identically at 900 lots. Two independent structural failures are running simultaneously: the conjunctive 'all' gate produces near-zero joint hit probability across 4 names scanned 5 times per session, and the lot-sizing engine generates orders that are multiples of available single-stock option book depth. The 'need 20 trades to approve a fix' rejection loop is itself the active error \u2014 it is a circular dependency that arithmetically prevents the data required to exit it from ever being generated. Every threshold relaxation inside the same conjunctive architecture cannot change this outcome.\n\nDIAGNOSIS: The lot-sizing engine is producing orders (900\u20131600 lots) that exceed 50% of resting offer depth on single-stock books, making execution physically impossible regardless of signal quality or gate settings \u2014 this, combined with the conjunctive gate architecture, has produced zero trades across every session and every version.",
-   "payload": "{}"
-  },
-  {
-   "id": 168,
-   "ts": "2026-07-30T16:55:24+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Thu 30 Jul 16:55 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 167,
-   "ts": "2026-07-30T16:55:24+05:30",
    "kind": "DATA",
    "symbol": "",
    "headline": "Lot sizes from kite",
