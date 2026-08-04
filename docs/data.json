@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 286,
+   "ts": "2026-08-04T12:06:23+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 285,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 284,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 283,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 282,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 281,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 280,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 279,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 278,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 277,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 276,
+   "ts": "2026-08-04T12:06:23.065343+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 275,
+   "ts": "2026-08-04T12:06:23+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 274,
    "ts": "2026-08-04T11:46:15+05:30",
    "kind": "IDLE",
@@ -1363,114 +1471,6 @@
    "symbol": "",
    "headline": "Lot sizes from kite",
    "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 166,
-   "ts": "2026-07-30T14:47:41+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_MinGate'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"synthetic\", \"bars\": 3312, \"confidence\": \"low\", \"caveat\": \"option prices reconstructed from underlying candles with a modelled IV path; treat direction and cost drag as informative, absolute P&L as not\"}}"
-  },
-  {
-   "id": 165,
-   "ts": "2026-07-30T14:47:41+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Six or more consecutive review cycles have produced the same diagnosis and the same outcome: zero trades, circular rejection, no learning. The 2026-07-30 11:43 log is the clearest data point \u2014 INFY had rv/iv=2.006, friction=0.856%, a clean directional PUT signal, and was blocked purely by the order-size gate (1600 lots vs ~400-1200 resting offer). TCS showed the same at 900 lots. This is two independent structural failures running simultaneously: (1) the conjunctive gate architecture produces near-zero joint hit probability across a 4-name universe scanned ~5 times per session, and (2) the lot-sizing engine is producing orders that are multiples of available offer depth on single-stock books. Both failures are empirically confirmed; neither is a signal quality problem. Continuing to reject structural change on the grounds of insufficient trade data is the active error \u2014 the architecture is arithmetically preventing the data from being generated.\n\nDIAGNOSIS: The lot-sizing engine generates order sizes (900-1600 lots) that exceed 50% of resting offer depth on single-stock option books, making execution physically impossible; combined with the conjunctive gate architecture, the system cannot fire a trade under any realistic market condition.",
-   "payload": "{}"
-  },
-  {
-   "id": 164,
-   "ts": "2026-07-30T14:47:41+05:30",
-   "kind": "SCAN",
-   "symbol": "",
-   "headline": "Nothing passed the screen",
-   "detail": "",
-   "payload": "{}"
-  },
-  {
-   "id": 163,
-   "ts": "2026-07-30T14:47:41+05:30",
-   "kind": "SCREEN",
-   "symbol": "",
-   "headline": "Tradable now: none",
-   "detail": "HDFCBANK score=-27.326 friction=1.034% liquid=3 REJECTED: realised/implied 0.308 under 0.85 - options priced above what the tape is actually delivering | NIFTY score=-32.562 friction=1.074% liquid=8 REJECTED: realised/implied 0.657 under 0.85 - options priced above what the tape is actually delivering | RELIANCE score=-33.18 friction=1.155% liquid=6 REJECTED: realised/implied 0.678 under 0.85 - options priced above what the tape is actually delivering | SBIN score=-36.617 friction=1.068% liquid=6 REJECTED: realised/implied 0.605 under 0.85 - options priced above what the tape is actually delivering | ICICIBANK score=-40.378 friction=1.131% liquid=6 REJECTED: realised/implied 0.642 under 0.85 - options priced above what the tape is actually delivering | INFY score=-40.665 friction=1.042% liquid=2 REJECTED: realised/implied 0.612 under 0.85 - options priced above what the tape is actually delivering | TCS score=-40.781 friction=1.192% liquid=3 REJECTED: realised/implied 0.579 under 0.85 - options priced above what the tape is actually delivering | BANKNIFTY score=-40.873 friction=0.77% liquid=4 REJECTED: realised/implied 0.541 under 0.85 - options priced above what the tape is actually delivering | FINNIFTY score=-99.0 friction=?% liquid=0 REJECTED: no liquid near-ATM contract",
-   "payload": "{\"ranking\": [{\"symbol\": \"HDFCBANK\", \"score\": -27.326, \"tradable\": false, \"liquidity_score\": 13.392, \"avg_friction_pct\": 1.034, \"liquid_atm_contracts\": 3, \"why\": [\"realised/implied 0.308 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"NIFTY\", \"score\": -32.562, \"tradable\": false, \"liquidity_score\": 12.72, \"avg_friction_pct\": 1.074, \"liquid_atm_contracts\": 8, \"why\": [\"realised/implied 0.657 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"RELIANCE\", \"score\": -33.18, \"tradable\": false, \"liquidity_score\": 6.973, \"avg_friction_pct\": 1.155, \"liquid_atm_contracts\": 6, \"why\": [\"realised/implied 0.678 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"SBIN\", \"score\": -36.617, \"tradable\": false, \"liquidity_score\": 3.283, \"avg_friction_pct\": 1.068, \"liquid_atm_contracts\": 6, \"why\": [\"realised/implied 0.605 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"ICICIBANK\", \"score\": -40.378, \"tradable\": false, \"liquidity_score\": 0.773, \"avg_friction_pct\": 1.131, \"liquid_atm_contracts\": 6, \"why\": [\"realised/implied 0.642 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"INFY\", \"score\": -40.665, \"tradable\": false, \"liquidity_score\": 0.092, \"avg_friction_pct\": 1.042, \"liquid_atm_contracts\": 2, \"why\": [\"realised/implied 0.612 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"TCS\", \"score\": -40.781, \"tradable\": false, \"liquidity_score\": -0.408, \"avg_friction_pct\": 1.192, \"liquid_atm_contracts\": 3, \"why\": [\"realised/implied 0.579 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"BANKNIFTY\", \"score\": -40.873, \"tradable\": false, \"liquidity_score\": -0.32, \"avg_friction_pct\": 0.77, \"liquid_atm_contracts\": 4, \"why\": [\"realised/implied 0.541 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"FINNIFTY\", \"score\": -99.0, \"tradable\": false, \"why\": [\"no liquid near-ATM contract\", \"realised/implied 0.494 under 0.85 - options priced above what the tape is actually delivering\"]}]}"
-  },
-  {
-   "id": 162,
-   "ts": "2026-07-30T14:47:41.352859+05:30",
-   "kind": "DATA",
-   "symbol": "MIDCPNIFTY",
-   "headline": "MIDCPNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 161,
-   "ts": "2026-07-30T14:47:41+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 160,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_KronosGate'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"synthetic\", \"bars\": 3024, \"confidence\": \"low\", \"caveat\": \"option prices reconstructed from underlying candles with a modelled IV path; treat direction and cost drag as informative, absolute P&L as not\"}}"
-  },
-  {
-   "id": 159,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Zero trades across every session, every version, every relaxation cycle \u2014 this is now the definitive finding. The 2026-07-30 11:43 log is the clearest evidence: INFY had rv/iv=2.006, friction=0.856%, trend=-0.401, a clean PUT signal, yet was killed not by entry logic but by the contract liquidity gate \u2014 1600-lot orders are more than 50% of resting offer depth on single-stock books. TCS showed the same failure at 900 lots. The conjunctive gate architecture (4 simultaneous hard conditions + any-of-7) is one failure mode; the position sizing producing orders too large for single-stock depth is a second, independent failure mode. Both must be fixed simultaneously \u2014 fixing only the gate leaves the sizing problem, and vice versa. The rejection loop (need 20 trades to validate, cannot reach 20 trades without fixing) has now persisted across at least nine review cycles; continuing to reject structural changes on the grounds that there are zero trades is itself the active error \u2014 the circular dependency can only be broken by action, not more observation.\n\nDIAGNOSIS: Position sizing generates lot counts (900\u20131600) that exceed 50% of resting offer depth on single-stock option books, causing the liquidity gate to reject every contract at every strike \u2014 this kills trades that have already passed all signal and cost filters, and it operates independently of the entry rule architecture, meaning threshold relaxation alone cannot fix it.",
-   "payload": "{}"
-  },
-  {
-   "id": 158,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "DEBATE",
-   "symbol": "INFY",
-   "headline": "INFY PE -> SKIP (0.82)",
-   "detail": "BULL: rv/iv ratio of 2.0 is the standout feature \u2014 realised vol is running at 3.72% per session versus implied of 1.45%, meaning the tape is delivering more than twice what the option is pricing. With 26 DTE and 18.5 sessions left, theta burn is 2.798% per session at ATM but this specific contract shows theta_session of Rs 1.00 on a mid of Rs 31.15, which is only 3.2% per session \u2014 manageable given the realised edge. The spread is tight at 0.32% (bid 31.10 / ask 31.20), total friction 0.99%, and break\n\nBEAR: The research brief itself says 'too thin to size' \u2014 atm_top_of_book_lots is 1 lot. That is the primary structural veto: you cannot build any meaningful position without walking the book. A 2-lot order at the ask could be the entire visible offer; impact cost is unknown and likely punitive beyond 1 lot. Second, the rv/iv ratio of 2.0 is seductive but backward-looking \u2014 the realised move of 0.49% open is already IN. Range_pos at 0.295 means spot is sitting in the lower third of today's range alrea",
-   "payload": "{\"contract\": \"INFY26AUG1160PE delta=-0.43 iv=30.0% theta/session=-1.00 breakeven=0.20% friction=0.65% (9.0 lots on the offer)\"}"
-  },
-  {
-   "id": 157,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "DEBATE",
-   "symbol": "INFY",
-   "headline": "INFY CE -> SKIP (0.88)",
-   "detail": "BULL: rv/iv at 2.0 is genuinely exceptional \u2014 realised vol is running at 3.71% per session vs implied's 1.45%, meaning the underlying is delivering more than 2x what IV prices. With 26 DTE and 18.5 sessions left, theta is only 2.798% per session on the ATM, manageable relative to realised move. The ATM spread is 0.42% and total friction 0.988%, both well within mandate. OI of 1.5M confirms liquidity in the contract itself. Delta 0.48 gives near-linear exposure. Breakeven move is only 0.175% \u2014 if INFY \n\nBEAR: Every meaningful directional signal is negative or absent. Trend score is -0.392 (bearish lean, not bull). VWAP deviation is -0.453% \u2014 price is BELOW VWAP, not above. EMA fast/slow is -0.058%, also bearish. Opening range break is 0.0 \u2014 no bullish break occurred. Kronos bull score is zero. The ret_open_pct of +0.488% is the morning gap, but range_pos is only 0.295 \u2014 the stock has given back most of that move and is now in the lower third of its daily range. We are 171 minutes into the session and",
-   "payload": "{\"contract\": \"INFY26AUG1180CE delta=0.48 iv=29.2% theta/session=-0.99 breakeven=0.17% friction=0.78% (11.0 lots on the offer)\"}"
-  },
-  {
-   "id": 156,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "RESEARCH",
-   "symbol": "",
-   "headline": "Research brief",
-   "detail": "**Regime read:** VIX at 12.15 is historically suppressed \u2014 the market is not pricing fear, it is pricing quiet. Every Kronos score is zero across the board, meaning no directional conviction anywhere in the model.\n\n**NIFTY** is nearly dead \u2014 ADX 16, rv/iv 0.52, realised vol only half of implied, theta burning 14.7% per session with 5 DTE. Structural trap, avoid.\n\n**BANKNIFTY** has better rv/iv (0.78) and manageable theta but ADX is 6 \u2014 pure chop, no trend. Top-of-book depth is just 2 lots, illiquid at size.\n\n**RELIANCE** is the most interesting name: strong trend score (0.84), ADX 44, opening range break, VWAP deviation +0.38%, spot up 0.9% from open. Problem is rv/iv 0.64 \u2014 realised is still lagging implied \u2014 and IV is actually falling 5.3% today, which caps call premium expansion. Call flow is mixed; max pain sits 0.8% below spot.\n\n**INFY** screams: rv/iv 2.0, realised per session 3.7% vs expected 1.45%, massive move already in (up 0.49% open, but range_pos only 0.295 \u2014 it has given back). Top-of-book depth 1 lot only. Too thin to size.\n\n**TCS** similar story: rv/iv 1.44, ADX 61, but trend score deeply negative (-0.64), price well below VWAP, suggesting the move is already spent ",
-   "payload": "{}"
-  },
-  {
-   "id": 155,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "SKIP",
-   "symbol": "TCS",
-   "headline": "TCS PE signal but no tradable contract",
-   "detail": "nothing passed the gate (first rejections: [(2440.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2460.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2420.0, 'order of 900 is more than 50% of the 450 resting on the offer'), (2480.0, 'order of 900 is more than 50% of the 450 resting on the offer')])",
    "payload": "{}"
   }
  ]
