@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 274,
+   "ts": "2026-08-04T11:46:15+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 273,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 272,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 271,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 270,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 269,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 268,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 267,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 266,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 265,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 264,
+   "ts": "2026-08-04T11:46:15.639807+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 263,
+   "ts": "2026-08-04T11:46:15+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 262,
    "ts": "2026-08-03T19:29:17+05:30",
    "kind": "STRATEGY",
@@ -1364,114 +1472,6 @@
    "headline": "TCS PE signal but no tradable contract",
    "detail": "nothing passed the gate (first rejections: [(2440.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2460.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2420.0, 'order of 900 is more than 50% of the 450 resting on the offer'), (2480.0, 'order of 900 is more than 50% of the 450 resting on the offer')])",
    "payload": "{}"
-  },
-  {
-   "id": 154,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "SKIP",
-   "symbol": "TCS",
-   "headline": "TCS CE signal but no tradable contract",
-   "detail": "nothing passed the gate (first rejections: [(2440.0, 'order of 900 is more than 50% of the 900 resting on the offer'), (2460.0, 'order of 900 is more than 50% of the 450 resting on the offer'), (2420.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2480.0, 'order of 900 is more than 50% of the 225 resting on the offer')])",
-   "payload": "{}"
-  },
-  {
-   "id": 153,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "SCREEN",
-   "symbol": "",
-   "headline": "Tradable now: ['INFY', 'TCS', 'ICICIBANK']",
-   "detail": "INFY score=13.704 friction=0.912% liquid=2 | TCS score=10.757 friction=1.105% liquid=5 | ICICIBANK score=9.77 friction=1.121% liquid=4 | NIFTY score=-31.412 friction=1.128% liquid=6 REJECTED: realised/implied 0.523 under 0.85 - options priced above what the tape is actually delivering | RELIANCE score=-33.861 friction=1.178% liquid=7 REJECTED: realised/implied 0.638 under 0.85 - options priced above what the tape is actually delivering | HDFCBANK score=-35.867 friction=1.16% liquid=4 REJECTED: realised/implied 0.528 under 0.85 - options priced above what the tape is actually delivering | SBIN score=-38.622 friction=1.101% liquid=7 REJECTED: realised/implied 0.558 under 0.85 - options priced above what the tape is actually delivering | BANKNIFTY score=-40.105 friction=0.635% liquid=1 REJECTED: realised/implied 0.783 under 0.85 - options priced above what the tape is actually delivering | FINNIFTY score=-99.0 friction=?% liquid=0 REJECTED: no liquid near-ATM contract",
-   "payload": "{\"ranking\": [{\"symbol\": \"INFY\", \"score\": 13.704, \"tradable\": true, \"liquidity_score\": 2.474, \"avg_friction_pct\": 0.912, \"liquid_atm_contracts\": 2, \"why\": []}, {\"symbol\": \"TCS\", \"score\": 10.757, \"tradable\": true, \"liquidity_score\": -0.211, \"avg_friction_pct\": 1.105, \"liquid_atm_contracts\": 5, \"why\": []}, {\"symbol\": \"ICICIBANK\", \"score\": 9.77, \"tradable\": true, \"liquidity_score\": 0.402, \"avg_friction_pct\": 1.121, \"liquid_atm_contracts\": 4, \"why\": []}, {\"symbol\": \"NIFTY\", \"score\": -31.412, \"tradable\": false, \"liquidity_score\": 14.187, \"avg_friction_pct\": 1.128, \"liquid_atm_contracts\": 6, \"why\": [\"realised/implied 0.523 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"RELIANCE\", \"score\": -33.861, \"tradable\": false, \"liquidity_score\": 6.601, \"avg_friction_pct\": 1.178, \"liquid_atm_contracts\": 7, \"why\": [\"realised/implied 0.638 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"HDFCBANK\", \"score\": -35.867, \"tradable\": false, \"liquidity_score\": 5.083, \"avg_friction_pct\": 1.16, \"liquid_atm_contracts\": 4, \"why\": [\"realised/implied 0.528 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"SBIN\", \"score\": -38.622, \"tradable\": false, \"liquidity_score\": 2.091, \"avg_friction_pct\": 1.101, \"liquid_atm_contracts\": 7, \"why\": [\"realised/implied 0.558 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"BANKNIFTY\", \"score\": -40.105, \"tradable\": false, \"liquidity_score\": -0.184, \"avg_friction_pct\": 0.635, \"liquid_atm_contracts\": 1, \"why\": [\"realised/implied 0.783 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"FINNIFTY\", \"score\": -99.0, \"tradable\": false, \"why\": [\"no liquid near-ATM contract\", \"realised/implied 0.583 under 0.85 - options priced above what the tape is actually delivering\"]}]}"
-  },
-  {
-   "id": 152,
-   "ts": "2026-07-30T12:06:21.981525+05:30",
-   "kind": "DATA",
-   "symbol": "MIDCPNIFTY",
-   "headline": "MIDCPNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 151,
-   "ts": "2026-07-30T12:06:21+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 150,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_MinimalGate_SizedForDepth'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"synthetic\", \"bars\": 2979, \"confidence\": \"low\", \"caveat\": \"option prices reconstructed from underlying candles with a modelled IV path; treat direction and cost drag as informative, absolute P&L as not\"}}"
-  },
-  {
-   "id": 149,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Zero trades across every session, every version, every relaxation cycle. The blocked-and-skipped log from 2026-07-30 11:43 is the clearest evidence yet: INFY had rv/iv=2.006, edge=7.988, friction=0.856%, trend=-0.401 \u2014 a strongly directional PUT signal with excellent RV/IV \u2014 yet no trade fired. TCS and INFY both had valid directional reads but were killed by the contract liquidity gate (order size >50% of resting offer). This is now two distinct failure modes running simultaneously: (1) the conjunctive gate architecture still prevents entry even when fundamentals are clean, as seen on 2026-07-27; (2) the lot-size sizing is generating orders too large for single-stock option books \u2014 900 lots on TCS and 1600 lots on INFY are simply not absorbable. The circular rejection loop ('need 20 trades to approve a fix, but cannot reach 20 trades without fixing') has now persisted across at least nine review cycles and is itself the active loss \u2014 theta and opportunity cost accumulate on idle capital. Two concrete fixes are now identified by the data: shrink the 'all' gate to the absolute minimum (cost and time only), and reduce lot sizing so single-stock orders are within 25% of resting offer depth.\n\nDIAGNOSIS: Two simultaneous blockers: the conjunctive gate architecture produces near-zero joint hit rate, AND the position sizing generates order sizes that exceed 50% of resting offer depth on single-stock names, guaranteeing SKIP even when signals are valid.",
-   "payload": "{}"
-  },
-  {
-   "id": 148,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "SCAN",
-   "symbol": "",
-   "headline": "No entry rule fired",
-   "detail": "INFY: edge=7.988 rv/iv=2.006 trend=-0.401 friction=0.8564% | TCS: edge=8.081 rv/iv=1.456 trend=-0.591 friction=0.858% | ICICIBANK: edge=7.392 rv/iv=1.277 trend=-0.175 friction=0.9557%",
-   "payload": "{}"
-  },
-  {
-   "id": 147,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "SKIP",
-   "symbol": "TCS",
-   "headline": "TCS PE signal but no tradable contract",
-   "detail": "nothing passed the gate (first rejections: [(2440.0, 'order of 900 is more than 50% of the 675 resting on the offer'), (2460.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2420.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2480.0, 'order of 900 is more than 50% of the 450 resting on the offer')])",
-   "payload": "{}"
-  },
-  {
-   "id": 146,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "SKIP",
-   "symbol": "TCS",
-   "headline": "TCS CE signal but no tradable contract",
-   "detail": "nothing passed the gate (first rejections: [(2440.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2460.0, 'order of 900 is more than 50% of the 225 resting on the offer'), (2420.0, 'order of 900 is more than 50% of the 450 resting on the offer'), (2480.0, 'order of 900 is more than 50% of the 450 resting on the offer')])",
-   "payload": "{}"
-  },
-  {
-   "id": 145,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "SKIP",
-   "symbol": "INFY",
-   "headline": "INFY PE signal but no tradable contract",
-   "detail": "nothing passed the gate (first rejections: [(1155.0, 'order of 1600 is more than 50% of the 1200 resting on the offer'), (1160.0, 'order of 1600 is more than 50% of the 400 resting on the offer'), (1140.0, 'order of 1600 is more than 50% of the 1200 resting on the offer'), (1175.0, 'order of 1600 is more than 50% of the 1200 resting on the offer')])",
-   "payload": "{}"
-  },
-  {
-   "id": 144,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "SKIP",
-   "symbol": "INFY",
-   "headline": "INFY CE signal but no tradable contract",
-   "detail": "nothing passed the gate (first rejections: [(1155.0, 'order of 1600 is more than 50% of the 400 resting on the offer'), (1160.0, 'order of 1600 is more than 50% of the 400 resting on the offer'), (1140.0, 'order of 1600 is more than 50% of the 800 resting on the offer'), (1175.0, 'order of 1600 is more than 50% of the 800 resting on the offer')])",
-   "payload": "{}"
-  },
-  {
-   "id": 143,
-   "ts": "2026-07-30T11:43:44+05:30",
-   "kind": "SCREEN",
-   "symbol": "",
-   "headline": "Tradable now: ['INFY', 'TCS', 'ICICIBANK']",
-   "detail": "INFY score=12.439 friction=0.901% liquid=3 | TCS score=10.346 friction=1.093% liquid=5 | ICICIBANK score=9.793 friction=1.05% liquid=5 | NIFTY score=-32.266 friction=1.15% liquid=10 REJECTED: realised/implied 0.521 under 0.85 - options priced above what the tape is actually delivering | RELIANCE score=-32.735 friction=1.013% liquid=6 REJECTED: realised/implied 0.704 under 0.85 - options priced above what the tape is actually delivering | HDFCBANK score=-34.658 friction=1.151% liquid=2 REJECTED: realised/implied 0.545 under 0.85 - options priced above what the tape is actually delivering | SBIN score=-38.56 friction=1.027% liquid=6 REJECTED: realised/implied 0.568 under 0.85 - options priced above what the tape is actually delivering | BANKNIFTY score=-38.708 friction=0.641% liquid=3 REJECTED: realised/implied 0.809 under 0.85 - options priced above what the tape is actually delivering | FINNIFTY score=-99.0 friction=?% liquid=0 REJECTED: no liquid near-ATM contract",
-   "payload": "{\"ranking\": [{\"symbol\": \"INFY\", \"score\": 12.439, \"tradable\": true, \"liquidity_score\": 1.099, \"avg_friction_pct\": 0.901, \"liquid_atm_contracts\": 3, \"why\": []}, {\"symbol\": \"TCS\", \"score\": 10.346, \"tradable\": true, \"liquidity_score\": -0.206, \"avg_friction_pct\": 1.093, \"liquid_atm_contracts\": 5, \"why\": []}, {\"symbol\": \"ICICIBANK\", \"score\": 9.793, \"tradable\": true, \"liquidity_score\": 0.278, \"avg_friction_pct\": 1.05, \"liquid_atm_contracts\": 5, \"why\": []}, {\"symbol\": \"NIFTY\", \"score\": -32.266, \"tradable\": false, \"liquidity_score\": 13.184, \"avg_friction_pct\": 1.15, \"liquid_atm_contracts\": 10, \"why\": [\"realised/implied 0.521 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"RELIANCE\", \"score\": -32.735, \"tradable\": false, \"liquidity_score\": 7.472, \"avg_friction_pct\": 1.013, \"liquid_atm_contracts\": 6, \"why\": [\"realised/implied 0.704 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"HDFCBANK\", \"score\": -34.658, \"tradable\": false, \"liquidity_score\": 6.131, \"avg_friction_pct\": 1.151, \"liquid_atm_contracts\": 2, \"why\": [\"realised/implied 0.545 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"SBIN\", \"score\": -38.56, \"tradable\": false, \"liquidity_score\": 1.95, \"avg_friction_pct\": 1.027, \"liquid_atm_contracts\": 6, \"why\": [\"realised/implied 0.568 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"BANKNIFTY\", \"score\": -38.708, \"tradable\": false, \"liquidity_score\": 1.256, \"avg_friction_pct\": 0.641, \"liquid_atm_contracts\": 3, \"why\": [\"realised/implied 0.809 under 0.85 - options priced above what the tape is actually delivering\"]}, {\"symbol\": \"FINNIFTY\", \"score\": -99.0, \"tradable\": false, \"why\": [\"no liquid near-ATM contract\", \"realised/implied 0.589 under 0.85 - options priced above what the tape is actually delivering\"]}]}"
   }
  ]
 }
