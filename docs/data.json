@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 346,
+   "ts": "2026-08-05T14:54:04+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 345,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 344,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 343,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 342,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 341,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 340,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 339,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 338,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 337,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 336,
+   "ts": "2026-08-05T14:54:04.031551+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 335,
+   "ts": "2026-08-05T14:54:04+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 334,
    "ts": "2026-08-05T12:07:20+05:30",
    "kind": "IDLE",
@@ -1359,114 +1467,6 @@
   {
    "id": 227,
    "ts": "2026-08-03T12:17:42+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 226,
-   "ts": "2026-07-31T18:46:35+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_BreakTheLoop'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 225,
-   "ts": "2026-07-31T18:46:35+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Five consecutive review cycles have produced identical findings and identical downstream rejections \u2014 the rejection gate is now the confirmed primary failure, not the strategy. The structural evidence is unambiguous and has not changed: on 2026-07-30 at 11:43, INFY rv/iv=2.006, friction=0.856%, clean directional signal, blocked purely because 1600 lots exceeded 50% of resting offer depth on a single-stock book; TCS blocked identically at 900 lots. These are not marginal cases \u2014 they are optimal conditions that still cannot clear the depth gate, proving single-stock names are architecturally incompatible with the sizing engine at this account size. The conjunctive 'all' gate requiring four simultaneous hard conditions across a four-name universe produces near-zero joint hit probability before sizing is ever reached. The circular rejection logic \u2014 'need 20 trades to approve a fix, cannot reach 20 trades without fixing' \u2014 has been explicitly identified and explicitly re-applied five times; it is not risk management, it is an infinite loop that must be broken now.\n\nDIAGNOSIS: The universe contains single-stock names whose option books cannot absorb the lot sizes the sizing engine generates at 1.5% risk on Rs 5,00,000 \u2014 this is arithmetic, not a tuning problem \u2014 and the downstream rejection gate demanding 20 trades before approving any structural fix makes the system self-sealing and permanently non-trading.",
-   "payload": "{}"
-  },
-  {
-   "id": 224,
-   "ts": "2026-07-31T18:46:35+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Fri 31 Jul 18:46 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 223,
-   "ts": "2026-07-31T18:46:35+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 222,
-   "ts": "2026-07-31T17:30:35+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_TwoOfMany'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 221,
-   "ts": "2026-07-31T17:30:35+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Zero trades across every version and every review cycle is not a signal problem \u2014 it is two confirmed structural failures that have been correctly diagnosed in every past review and then blocked by a circular rejection gate that demands trade data the architecture cannot produce. The 11:43 log on 2026-07-30 is the clearest available evidence: INFY rv/iv=2.006, friction=0.856%, clean directional signal, rejected purely because a 1600-lot order exceeded 50% of resting offer depth on a single-stock book; TCS rejected identically at 900 lots. Single-stock option books do not carry enough resting depth to absorb the lot sizes the sizing engine generates at 1.5% risk on Rs 5,00,000 \u2014 this is arithmetic, not a tuning problem. The conjunctive 'all' gate compounds this by requiring four simultaneous hard conditions across a four-name universe scanned a handful of times per session, producing near-zero joint hit probability before sizing is ever reached. The 'need 20 trades to approve a fix' rejection loop has now been explicitly identified and explicitly re-applied in every past review \u2014 applying it a fifth time produces the same null result by construction and is itself the active error. The fix is structural: drop single-stock names entirely, trade index options only where lot sizes are manageable relative to book depth, and reduce the 'all' gate to cost-and-time only.\n\nDIAGNOSIS: The sizing engine generates lot counts that exceed available single-stock option book depth by a factor",
-   "payload": "{}"
-  },
-  {
-   "id": 220,
-   "ts": "2026-07-31T17:30:35+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Fri 31 Jul 17:30 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 219,
-   "ts": "2026-07-31T17:30:35+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 218,
-   "ts": "2026-07-31T17:19:03+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_BreakTheDeadlock'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 217,
-   "ts": "2026-07-31T17:19:03+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Zero trades across all versions and review cycles is not a signal quality problem \u2014 it is two confirmed structural failures that every past review has correctly identified and every downstream gate has then blocked from being fixed. The 2026-07-30 11:43 log is the clearest evidence available: INFY rv/iv=2.006, friction=0.856%, clean directional signal, rejected purely because 1600 lots exceeded 50% of resting offer depth on a single-stock book; TCS rejected identically at 900 lots. Single-stock option books do not carry enough resting depth to absorb the lot sizes the sizing engine generates at 1.5% risk on a Rs 5,00,000 account \u2014 this is arithmetic, not a tuning problem. The conjunctive 'all' gate compounds this by requiring four simultaneous conditions across a four-name universe scanned a handful of times per session, producing near-zero joint hit probability before sizing is even reached. The circular rejection logic \u2014 'need 20 trades to approve a fix, cannot reach 20 trades without fixing' \u2014 has now persisted through every version and is self-sealing; applying it again produces the same null result by construction.\n\nDIAGNOSIS: The universe contains single-stock names whose option books cannot absorb the minimum viable order size at 1.5% risk on this account \u2014 every signal on TCS, INFY, RELIANCE, ICICIBANK is structurally unreachable. Dropping single-stock names and trading index options only (NIFTY, BANKNIFTY) where lot sizes are small relative to book depth is the only ",
-   "payload": "{}"
-  },
-  {
-   "id": 216,
-   "ts": "2026-07-31T17:19:03+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Fri 31 Jul 17:19 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 215,
-   "ts": "2026-07-31T17:19:03+05:30",
    "kind": "DATA",
    "symbol": "",
    "headline": "Lot sizes from kite",
