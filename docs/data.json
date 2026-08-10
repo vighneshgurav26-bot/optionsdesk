@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 526,
+   "ts": "2026-08-10T14:16:28+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 525,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 524,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 523,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 522,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 521,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 520,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 519,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 518,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 517,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 516,
+   "ts": "2026-08-10T14:16:28.116570+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 515,
+   "ts": "2026-08-10T14:16:28+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 514,
    "ts": "2026-08-10T12:27:57+05:30",
    "kind": "IDLE",
@@ -1359,114 +1467,6 @@
   {
    "id": 407,
    "ts": "2026-08-07T10:55:13+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 406,
-   "ts": "2026-08-06T18:43:12+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_MinimalGates'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 405,
-   "ts": "2026-08-06T18:43:12+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Six consecutive reviews, two strategy versions, repeated threshold halvings, and the result is identical: zero trades. The evidence is not ambiguous \u2014 this is not a signal problem, not a threshold problem, and not a data gap. The downstream approval gate requires 20 historical trades to approve a replacement, but the system cannot generate 20 trades without first being approved; this is a documented, self-sustaining deadlock with no internal resolution path. Every prior review has correctly diagnosed this and every downstream response has restated the deadlock as if it were a risk control. Zero trades across all cycles IS the empirical result \u2014 it is the data, not the absence of data. The only remaining honest action is to produce the most structurally minimal strategy possible: NIFTY/BANKNIFTY only, a single mandatory condition (rv_iv_ratio > 0.65), and every other directional filter collapsed into one low-bar any-of gate, forcing the system to either execute or explicitly log why a named NIFTY contract failed each named gate.\n\nDIAGNOSIS: The approval gate enforces a 20-trade minimum on a system architecturally incapable of reaching 20 trades without prior approval \u2014 a pure deadlock. The strategy has never fired, so no trade-level diagnosis (MFE, MAE, exit mix, theta decay, charges) is possible. The deadlock is the single biggest problem and it cannot be resolved by further threshold relaxation within the current architecture.",
-   "payload": "{}"
-  },
-  {
-   "id": 404,
-   "ts": "2026-08-06T18:43:12+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Thu 06 Aug 18:43 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 403,
-   "ts": "2026-08-06T18:43:12+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 402,
-   "ts": "2026-08-06T17:32:53+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_MinimalGate'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 401,
-   "ts": "2026-08-06T17:32:53+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Fifteen consecutive zero-trade cycles across two strategy versions, six reviews, and repeated threshold halvings have produced an identical result each time. The evidence is unambiguous and the cause is structural, not signal-level: the system cannot generate trades, the downstream approval gate requires trades to approve a replacement, and this deadlock has no self-resolving property. Every prior review has correctly diagnosed this and every downstream rejection has restated the deadlock as if it were a risk control. Zero trades across fifteen cycles IS the empirical result \u2014 it is not a data gap requiring more data, it is the data. The single-stock names (RELIANCE, ICICIBANK) are architecturally unfillable at 1.5% risk on Rs 5,00,000 given single-stock option lot sizes and book depth. NIFTY and BANKNIFTY, which have index-scale depth and should trivially pass every relaxed gate, are producing zero signals \u2014 arithmetically impossible under the current thresholds unless they are never reached or silently suppressed upstream. Continuing to produce the same diagnosis while the downstream gate enforces the deadlock is not review; the only honest action is unconditional structural replacement.\n\nDIAGNOSIS: The system is in a confirmed, documented, self-sustaining deadlock: it cannot trade without approval, approval requires 20 trades, and 15 cycles of zero trades prove it cannot reach 20 trades under any signal relaxation. The architecture \u2014 not the signal thresholds \u2014 is the fail",
-   "payload": "{}"
-  },
-  {
-   "id": 400,
-   "ts": "2026-08-06T17:32:53+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Thu 06 Aug 17:32 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 399,
-   "ts": "2026-08-06T17:32:53+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 398,
-   "ts": "2026-08-06T17:19:38+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_MinimalGates'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 397,
-   "ts": "2026-08-06T17:19:38+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "This is the fourteenth consecutive zero-trade cycle across two strategy versions, five reviews, and multiple threshold halvings. The evidence is no longer ambiguous: the failure is architectural, not signal-level. Every past review has correctly identified the two structural causes \u2014 single-stock lot sizes overwhelming book depth at 1.5% risk on Rs 5,00,000, and index contracts (NIFTY/BANKNIFTY) producing zero signals despite relaxed thresholds that are arithmetically impossible to fail simultaneously \u2014 yet the downstream approval gate has rejected every fix on the circular grounds that zero historical trades cannot satisfy a 20-trade approval threshold. The '20-trade gate' applied to a system that cannot trade without first being approved is not risk management; it is the documented, self-sustaining failure mode. The only honest conclusion is that the current strategy architecture must be replaced unconditionally, without requiring historical trade data to justify the replacement, because zero trades across fourteen cycles IS the data.\n\nDIAGNOSIS: Architectural deadlock: the strategy cannot generate trades, therefore cannot satisfy the approval gate, therefore cannot be replaced under the approval gate \u2014 a closed loop with no self-resolving property. Signal tuning is irrelevant until this loop is broken.",
-   "payload": "{}"
-  },
-  {
-   "id": 396,
-   "ts": "2026-08-06T17:19:38+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Thu 06 Aug 17:19 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 395,
-   "ts": "2026-08-06T17:19:38+05:30",
    "kind": "DATA",
    "symbol": "",
    "headline": "Lot sizes from kite",
