@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 595,
+   "ts": "2026-08-11T14:07:38+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 594,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 593,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 592,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 591,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 590,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 589,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 588,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 587,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 586,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 585,
+   "ts": "2026-08-11T14:07:38.497101+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 584,
+   "ts": "2026-08-11T14:07:38+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "213 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 583,
    "ts": "2026-08-11T13:08:54+05:30",
    "kind": "IDLE",
@@ -1363,114 +1471,6 @@
    "symbol": "",
    "headline": "Market closed",
    "detail": "Fri 07 Aug 17:55 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 475,
-   "ts": "2026-08-07T17:55:12+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 474,
-   "ts": "2026-08-07T16:22:46+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_IndexOnly_MinimalGates'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 473,
-   "ts": "2026-08-07T16:22:46+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Eight reviews, two versions, zero trades \u2014 the empirical record is unambiguous and has not changed once. The downstream approval gate requires 20 historical trades before a replacement can be approved, but the system cannot generate 20 trades without first being approved; this is a self-sustaining deadlock with no internal resolution path, and every review has correctly identified it. NIFTY and BANKNIFTY have index-scale depth and should trivially pass every gate that has been relaxed to near-arithmetically-impossible-to-fail levels simultaneously \u2014 their continued production of zero signals is not a signal problem, it is a structural suppression or non-execution problem upstream of this strategy. The single-stock names remain architecturally unfillable at 1.5% risk on Rs 5,00,000 given lot-size economics and are noise in the universe list. Zero trades across all cycles IS the empirical finding \u2014 it is not a data gap requiring more relaxation, it is the data, and the only honest response is to acknowledge that incremental threshold changes within the current architecture cannot resolve a structural deadlock.\n\nDIAGNOSIS: The approval gate requires 20 trades to validate a replacement, but the system cannot generate any trades to satisfy that gate \u2014 a circular dependency that makes every threshold relaxation irrelevant. The strategy never fires not because signals are too tight, but because something upstream (scan execution, contract availability, or silent suppression) prevent",
-   "payload": "{}"
-  },
-  {
-   "id": 472,
-   "ts": "2026-08-07T16:22:46+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Fri 07 Aug 16:22 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 471,
-   "ts": "2026-08-07T16:22:46+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 470,
-   "ts": "2026-08-07T15:58:27+05:30",
-   "kind": "STRATEGY",
-   "symbol": "",
-   "headline": "Rejected proposal 'V4_MinimalGate_IndexOnly'",
-   "detail": "only 0 backtest trades (need 20); does not beat the incumbent's expectancy; expectancy is not positive",
-   "payload": "{\"backtest\": {\"trades\": 0, \"note\": \"no trades generated\", \"mode\": \"replay\", \"bars\": 24, \"confidence\": \"low\", \"symbols\": [\"NIFTY\", \"BANKNIFTY\"]}}"
-  },
-  {
-   "id": 469,
-   "ts": "2026-08-07T15:58:27+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: REPLACE",
-   "detail": "Seven reviews, two versions, repeated threshold halvings, zero trades \u2014 the empirical result is not ambiguous and has not changed. Every prior review has correctly diagnosed the same structural deadlock: the downstream approval gate requires 20 historical trades, the system cannot generate 20 trades without approval, and this loop has no internal resolution path. The single-stock names (RELIANCE, ICICIBANK) are architecturally unfillable at 1.5% risk on Rs 5,00,000 given lot-size economics. NIFTY and BANKNIFTY have index-scale depth and should trivially pass every gate that has been relaxed \u2014 their continued production of zero signals under thresholds that are arithmetically near-impossible to fail simultaneously is the clearest possible indicator that these contracts are either never reached, silently suppressed, or the scan is not executing against live data. The deadlock is the data: zero trades across all cycles IS the empirical finding, not a gap requiring more data before acting.\n\nDIAGNOSIS: The system cannot trade because it cannot get approved, and it cannot get approved because it has not traded. This is a self-sustaining deadlock, not a signal calibration problem. Every diagnostic action taken so far (threshold halving, universe trimming, filter relaxation) has been correct in isolation and irrelevant in practice because the approval gate is the binding constraint, not the strategy parameters.",
-   "payload": "{}"
-  },
-  {
-   "id": 468,
-   "ts": "2026-08-07T15:58:27+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Fri 07 Aug 15:58 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 467,
-   "ts": "2026-08-07T15:58:27+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 466,
-   "ts": "2026-08-07T14:57:37+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "No market data this cycle",
-   "detail": "provider blocked or returned nothing",
-   "payload": "{}"
-  },
-  {
-   "id": 465,
-   "ts": "2026-08-07T14:57:37.043591+05:30",
-   "kind": "DATA",
-   "symbol": "SBIN",
-   "headline": "SBIN: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 464,
-   "ts": "2026-08-07T14:57:37.043591+05:30",
-   "kind": "DATA",
-   "symbol": "TCS",
-   "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
  ]
