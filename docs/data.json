@@ -394,6 +394,33 @@
  ],
  "journal": [
   {
+   "id": 682,
+   "ts": "2026-08-12T16:30:30+05:30",
+   "kind": "ERROR",
+   "symbol": "",
+   "headline": "Review call failed",
+   "detail": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+   "payload": "{}"
+  },
+  {
+   "id": 681,
+   "ts": "2026-08-12T16:30:30+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Wed 12 Aug 16:30 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 680,
+   "ts": "2026-08-12T16:30:30+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "214 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 679,
    "ts": "2026-08-12T16:15:39+05:30",
    "kind": "ERROR",
@@ -1444,33 +1471,6 @@
    "symbol": "RELIANCE",
    "headline": "RELIANCE: no usable chain",
    "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 562,
-   "ts": "2026-08-11T11:40:26.804473+05:30",
-   "kind": "DATA",
-   "symbol": "BANKNIFTY",
-   "headline": "BANKNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 561,
-   "ts": "2026-08-11T11:40:26.804473+05:30",
-   "kind": "DATA",
-   "symbol": "NIFTY",
-   "headline": "NIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 560,
-   "ts": "2026-08-11T11:40:26+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
    "payload": "{}"
   }
  ]
