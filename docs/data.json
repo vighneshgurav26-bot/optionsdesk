@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 652,
+   "ts": "2026-08-12T12:29:19+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 651,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 650,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 649,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 648,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 647,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 646,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 645,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 644,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 643,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 642,
+   "ts": "2026-08-12T12:29:19.280414+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 641,
+   "ts": "2026-08-12T12:29:19+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "214 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 640,
    "ts": "2026-08-12T11:13:21+05:30",
    "kind": "IDLE",
@@ -1363,114 +1471,6 @@
    "symbol": "",
    "headline": "Lot sizes from kite",
    "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 532,
-   "ts": "2026-08-10T16:38:38+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: KEEP",
-   "detail": "Eleven reviews, two versions, zero trades \u2014 the empirical record is entirely static and has not moved by a single trade despite repeated and aggressive threshold relaxation. Every prior review has correctly named the structural deadlock: the approval gate requires 20 historical trades, the system cannot produce 20 trades without approval, and no threshold change within the current architecture resolves a loop that has no internal exit condition. NIFTY and BANKNIFTY are the highest-volume index option markets in the world; gates relaxed to rv_iv > 0.70, friction < 1.90%, adx > 15, and trend_score > 0.20 should fire daily on these underlyings under almost any normal session \u2014 their continued production of zero signals is not a signal-scarcity problem, it is a structural suppression, a scan path that never reaches live contracts, or a silent non-execution failure that is invisible to this review layer. Continued threshold relaxation within this architecture is not diagnostic action; it is noise that restates the same null result. The only honest conclusion available from this dataset is that the blocking mechanism is upstream of every parameter this review layer can touch.\n\nDIAGNOSIS: The system is in a closed-loop deadlock: zero trades cannot be generated without upstream structural fixes that are outside the scope of threshold tuning, and no number of further relaxations within the current strategy architecture will change the zero-trade outcome.",
-   "payload": "{}"
-  },
-  {
-   "id": 531,
-   "ts": "2026-08-10T16:38:38+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Mon 10 Aug 16:38 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 530,
-   "ts": "2026-08-10T16:38:38+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 529,
-   "ts": "2026-08-10T15:34:46+05:30",
-   "kind": "REVIEW",
-   "symbol": "",
-   "headline": "v2 review: KEEP",
-   "detail": "Ten reviews, two versions, zero trades \u2014 the empirical record is completely static and unambiguous. Every threshold relaxation attempted has produced no change in outcome, which is definitive evidence that the blocking mechanism is not the thresholds. The downstream approval gate explicitly requires 20 historical trades to approve a replacement strategy, but the system cannot generate 20 trades without approval \u2014 this is a closed loop with no internal exit condition, and every review cycle restates it identically. NIFTY and BANKNIFTY are the deepest, most liquid index option markets in the world by volume; their continued production of zero signals under gates that have been relaxed to near-trivially-passable levels (rv_iv > 0.70, friction < 1.90%, adx > 15, trend_score > 0.20) is not explicable by signal scarcity \u2014 it is structural suppression, a scan path that never reaches live contracts, or a non-execution pathway that is invisible to this review layer. The single-stock names contribute nothing and consume evaluation cycles. Zero trades across every session IS the complete dataset \u2014 continued threshold relaxation within this architecture is not a diagnostic action, it is noise.\n\nDIAGNOSIS: The approval gate creates an irresolvable deadlock: 20 trades are required to approve a new strategy, but no trades can be generated to satisfy that requirement under the current architecture. No threshold change within the current strategy structure can resolve a structural loop. The e",
-   "payload": "{}"
-  },
-  {
-   "id": 528,
-   "ts": "2026-08-10T15:34:46+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Mon 10 Aug 15:34 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 527,
-   "ts": "2026-08-10T15:34:46+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 526,
-   "ts": "2026-08-10T14:16:28+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "No market data this cycle",
-   "detail": "provider blocked or returned nothing",
-   "payload": "{}"
-  },
-  {
-   "id": 525,
-   "ts": "2026-08-10T14:16:28.116570+05:30",
-   "kind": "DATA",
-   "symbol": "SBIN",
-   "headline": "SBIN: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 524,
-   "ts": "2026-08-10T14:16:28.116570+05:30",
-   "kind": "DATA",
-   "symbol": "TCS",
-   "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 523,
-   "ts": "2026-08-10T14:16:28.116570+05:30",
-   "kind": "DATA",
-   "symbol": "INFY",
-   "headline": "INFY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 522,
-   "ts": "2026-08-10T14:16:28.116570+05:30",
-   "kind": "DATA",
-   "symbol": "HDFCBANK",
-   "headline": "HDFCBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 521,
-   "ts": "2026-08-10T14:16:28.116570+05:30",
-   "kind": "DATA",
-   "symbol": "MIDCPNIFTY",
-   "headline": "MIDCPNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
  ]
