@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 721,
+   "ts": "2026-08-13T12:33:47+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 720,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 719,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 718,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 717,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 716,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 715,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 714,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 713,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 712,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 711,
+   "ts": "2026-08-13T12:33:47.277942+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 710,
+   "ts": "2026-08-13T12:33:47+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "214 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 709,
    "ts": "2026-08-13T11:15:32+05:30",
    "kind": "IDLE",
@@ -1359,114 +1467,6 @@
   {
    "id": 602,
    "ts": "2026-08-11T15:11:21.006552+05:30",
-   "kind": "DATA",
-   "symbol": "MIDCPNIFTY",
-   "headline": "MIDCPNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 601,
-   "ts": "2026-08-11T15:11:21.006552+05:30",
-   "kind": "DATA",
-   "symbol": "FINNIFTY",
-   "headline": "FINNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 600,
-   "ts": "2026-08-11T15:11:21.006552+05:30",
-   "kind": "DATA",
-   "symbol": "ICICIBANK",
-   "headline": "ICICIBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 599,
-   "ts": "2026-08-11T15:11:21.006552+05:30",
-   "kind": "DATA",
-   "symbol": "RELIANCE",
-   "headline": "RELIANCE: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 598,
-   "ts": "2026-08-11T15:11:21.006552+05:30",
-   "kind": "DATA",
-   "symbol": "BANKNIFTY",
-   "headline": "BANKNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 597,
-   "ts": "2026-08-11T15:11:21.006552+05:30",
-   "kind": "DATA",
-   "symbol": "NIFTY",
-   "headline": "NIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 596,
-   "ts": "2026-08-11T15:11:21+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "213 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 595,
-   "ts": "2026-08-11T14:07:38+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "No market data this cycle",
-   "detail": "provider blocked or returned nothing",
-   "payload": "{}"
-  },
-  {
-   "id": 594,
-   "ts": "2026-08-11T14:07:38.497101+05:30",
-   "kind": "DATA",
-   "symbol": "SBIN",
-   "headline": "SBIN: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 593,
-   "ts": "2026-08-11T14:07:38.497101+05:30",
-   "kind": "DATA",
-   "symbol": "TCS",
-   "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 592,
-   "ts": "2026-08-11T14:07:38.497101+05:30",
-   "kind": "DATA",
-   "symbol": "INFY",
-   "headline": "INFY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 591,
-   "ts": "2026-08-11T14:07:38.497101+05:30",
-   "kind": "DATA",
-   "symbol": "HDFCBANK",
-   "headline": "HDFCBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 590,
-   "ts": "2026-08-11T14:07:38.497101+05:30",
    "kind": "DATA",
    "symbol": "MIDCPNIFTY",
    "headline": "MIDCPNIFTY: no usable chain",
