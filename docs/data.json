@@ -394,6 +394,33 @@
  ],
  "journal": [
   {
+   "id": 817,
+   "ts": "2026-08-14T16:09:09+05:30",
+   "kind": "ERROR",
+   "symbol": "",
+   "headline": "Review call failed",
+   "detail": "400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+   "payload": "{}"
+  },
+  {
+   "id": 816,
+   "ts": "2026-08-14T16:09:09+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Fri 14 Aug 16:09 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 815,
+   "ts": "2026-08-14T16:09:09+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "214 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 814,
    "ts": "2026-08-14T15:06:14+05:30",
    "kind": "IDLE",
@@ -1444,33 +1471,6 @@
    "symbol": "",
    "headline": "Lot sizes from kite",
    "detail": "214 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 697,
-   "ts": "2026-08-13T10:52:58+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "No market data this cycle",
-   "detail": "provider blocked or returned nothing",
-   "payload": "{}"
-  },
-  {
-   "id": 696,
-   "ts": "2026-08-13T10:52:58.574067+05:30",
-   "kind": "DATA",
-   "symbol": "SBIN",
-   "headline": "SBIN: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 695,
-   "ts": "2026-08-13T10:52:58.574067+05:30",
-   "kind": "DATA",
-   "symbol": "TCS",
-   "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
  ]
