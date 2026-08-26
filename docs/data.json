@@ -394,6 +394,33 @@
  ],
  "journal": [
   {
+   "id": 1630,
+   "ts": "2026-08-26T11:30:01+05:30",
+   "kind": "ERROR",
+   "symbol": "",
+   "headline": "Review call failed",
+   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
+   "payload": "{}"
+  },
+  {
+   "id": 1629,
+   "ts": "2026-08-26T11:30:01+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Wed 26 Aug 11:30 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 1628,
+   "ts": "2026-08-26T11:30:01+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "216 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 1627,
    "ts": "2026-08-26T10:53:48+05:30",
    "kind": "ERROR",
@@ -1443,33 +1470,6 @@
    "kind": "DATA",
    "symbol": "TCS",
    "headline": "TCS: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 1510,
-   "ts": "2026-08-25T09:54:32.422398+05:30",
-   "kind": "DATA",
-   "symbol": "INFY",
-   "headline": "INFY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 1509,
-   "ts": "2026-08-25T09:54:32.422398+05:30",
-   "kind": "DATA",
-   "symbol": "HDFCBANK",
-   "headline": "HDFCBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 1508,
-   "ts": "2026-08-25T09:54:32.422398+05:30",
-   "kind": "DATA",
-   "symbol": "MIDCPNIFTY",
-   "headline": "MIDCPNIFTY: no usable chain",
    "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
