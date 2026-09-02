@@ -394,6 +394,114 @@
  ],
  "journal": [
   {
+   "id": 1744,
+   "ts": "2026-09-02T14:12:48+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "No market data this cycle",
+   "detail": "provider blocked or returned nothing",
+   "payload": "{}"
+  },
+  {
+   "id": 1743,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "SBIN",
+   "headline": "SBIN: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1742,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "TCS",
+   "headline": "TCS: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1741,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "INFY",
+   "headline": "INFY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1740,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "HDFCBANK",
+   "headline": "HDFCBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1739,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "MIDCPNIFTY",
+   "headline": "MIDCPNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1738,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "FINNIFTY",
+   "headline": "FINNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1737,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "ICICIBANK",
+   "headline": "ICICIBANK: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1736,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "RELIANCE",
+   "headline": "RELIANCE: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1735,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "BANKNIFTY",
+   "headline": "BANKNIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1734,
+   "ts": "2026-09-02T14:12:48.163762+05:30",
+   "kind": "DATA",
+   "symbol": "NIFTY",
+   "headline": "NIFTY: no usable chain",
+   "detail": "provider returned nothing tradable",
+   "payload": "{}"
+  },
+  {
+   "id": 1733,
+   "ts": "2026-09-02T14:12:48+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "216 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 1732,
    "ts": "2026-09-02T13:39:10+05:30",
    "kind": "IDLE",
@@ -1363,114 +1471,6 @@
    "symbol": "",
    "headline": "Lot sizes from kite",
    "detail": "216 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 1624,
-   "ts": "2026-08-26T10:19:56+05:30",
-   "kind": "ERROR",
-   "symbol": "",
-   "headline": "Review call failed",
-   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
-   "payload": "{}"
-  },
-  {
-   "id": 1623,
-   "ts": "2026-08-26T10:19:56+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Wed 26 Aug 10:19 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 1622,
-   "ts": "2026-08-26T10:19:56+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "216 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 1621,
-   "ts": "2026-08-26T09:55:20+05:30",
-   "kind": "ERROR",
-   "symbol": "",
-   "headline": "Review call failed",
-   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
-   "payload": "{}"
-  },
-  {
-   "id": 1620,
-   "ts": "2026-08-26T09:55:20+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Wed 26 Aug 09:55 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 1619,
-   "ts": "2026-08-26T09:55:20+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "216 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 1618,
-   "ts": "2026-08-25T17:28:30+05:30",
-   "kind": "ERROR",
-   "symbol": "",
-   "headline": "Review call failed",
-   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
-   "payload": "{}"
-  },
-  {
-   "id": 1617,
-   "ts": "2026-08-25T17:28:30+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Tue 25 Aug 17:28 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 1616,
-   "ts": "2026-08-25T17:28:30+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "214 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 1615,
-   "ts": "2026-08-25T16:10:22+05:30",
-   "kind": "ERROR",
-   "symbol": "",
-   "headline": "Review call failed",
-   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
-   "payload": "{}"
-  },
-  {
-   "id": 1614,
-   "ts": "2026-08-25T16:10:22+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Tue 25 Aug 16:10 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 1613,
-   "ts": "2026-08-25T16:10:22+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "214 symbols cached",
    "payload": "{}"
   }
  ]
