@@ -394,6 +394,33 @@
  ],
  "journal": [
   {
+   "id": 2713,
+   "ts": "2026-10-26T15:30:19+05:30",
+   "kind": "ERROR",
+   "symbol": "",
+   "headline": "Review call failed",
+   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
+   "payload": "{}"
+  },
+  {
+   "id": 2712,
+   "ts": "2026-10-26T15:30:19+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Mon 26 Oct 15:30 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 2711,
+   "ts": "2026-10-26T15:30:19+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "219 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 2710,
    "ts": "2026-10-26T14:53:20+05:30",
    "kind": "IDLE",
@@ -1443,33 +1470,6 @@
    "kind": "DATA",
    "symbol": "MIDCPNIFTY",
    "headline": "MIDCPNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 2593,
-   "ts": "2026-10-20T14:23:19.735598+05:30",
-   "kind": "DATA",
-   "symbol": "FINNIFTY",
-   "headline": "FINNIFTY: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 2592,
-   "ts": "2026-10-20T14:23:19.735598+05:30",
-   "kind": "DATA",
-   "symbol": "ICICIBANK",
-   "headline": "ICICIBANK: no usable chain",
-   "detail": "provider returned nothing tradable",
-   "payload": "{}"
-  },
-  {
-   "id": 2591,
-   "ts": "2026-10-20T14:23:19.735598+05:30",
-   "kind": "DATA",
-   "symbol": "RELIANCE",
-   "headline": "RELIANCE: no usable chain",
    "detail": "provider returned nothing tradable",
    "payload": "{}"
   }
