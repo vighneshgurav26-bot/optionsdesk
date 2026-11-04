@@ -394,6 +394,33 @@
  ],
  "journal": [
   {
+   "id": 2818,
+   "ts": "2026-11-04T17:29:26+05:30",
+   "kind": "ERROR",
+   "symbol": "",
+   "headline": "Review call failed",
+   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
+   "payload": "{}"
+  },
+  {
+   "id": 2817,
+   "ts": "2026-11-04T17:29:26+05:30",
+   "kind": "IDLE",
+   "symbol": "",
+   "headline": "Market closed",
+   "detail": "Wed 04 Nov 17:29 IST",
+   "payload": "{}"
+  },
+  {
+   "id": 2816,
+   "ts": "2026-11-04T17:29:26+05:30",
+   "kind": "DATA",
+   "symbol": "",
+   "headline": "Lot sizes from kite",
+   "detail": "224 symbols cached",
+   "payload": "{}"
+  },
+  {
    "id": 2815,
    "ts": "2026-11-04T17:07:02+05:30",
    "kind": "ERROR",
@@ -1440,33 +1467,6 @@
   {
    "id": 2699,
    "ts": "2026-10-26T14:53:20+05:30",
-   "kind": "DATA",
-   "symbol": "",
-   "headline": "Lot sizes from kite",
-   "detail": "219 symbols cached",
-   "payload": "{}"
-  },
-  {
-   "id": 2698,
-   "ts": "2026-10-23T21:23:25+05:30",
-   "kind": "ERROR",
-   "symbol": "",
-   "headline": "Review call failed",
-   "detail": "401 Client Error: Unauthorized for url: https://api.anthropic.com/v1/messages",
-   "payload": "{}"
-  },
-  {
-   "id": 2697,
-   "ts": "2026-10-23T21:23:25+05:30",
-   "kind": "IDLE",
-   "symbol": "",
-   "headline": "Market closed",
-   "detail": "Fri 23 Oct 21:23 IST",
-   "payload": "{}"
-  },
-  {
-   "id": 2696,
-   "ts": "2026-10-23T21:23:25+05:30",
    "kind": "DATA",
    "symbol": "",
    "headline": "Lot sizes from kite",
